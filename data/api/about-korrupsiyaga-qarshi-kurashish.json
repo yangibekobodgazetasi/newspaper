@@ -1,0 +1,12 @@
+{
+  "method": "GET",
+  "path": "/api/about/korrupsiyaga-qarshi-kurashish",
+  "description": "Muassasada korrupsiyaning har qanday shakliga nisbatan murosasizlik siyosati",
+  "response": {
+    "title": "Korrupsiyaga qarshi kurashish",
+    "body": "<p>...</p>",
+    "hotline": "1003",
+    "trustLineUrl": "https://ishonch.uz",
+    "updatedAt": "2026-06-01T00:00:00Z"
+  }
+}

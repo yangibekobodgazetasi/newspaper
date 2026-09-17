@@ -1,0 +1,9 @@
+{
+  "method": "GET",
+  "path": "/api/contact/xaridorlar-uchun",
+  "description": "Xaridorlar (obunachilar) uchun ma'lumot",
+  "response": {
+    "title": "Xaridorlar uchun",
+    "body": "<p>Obuna narxlari, yetkazib berish tartibi...</p>"
+  }
+}

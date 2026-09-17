@@ -1,0 +1,23 @@
+{
+  "method": "GET",
+  "path": "/api/services/sorov",
+  "description": "Faol so'rovnoma va uning natijalari",
+  "response": {
+    "id": "s1",
+    "question": "Gazetaning qaysi rukni sizga eng ko'p yoqadi?",
+    "options": [
+      {
+        "id": "o1",
+        "label": "Shodiyona",
+        "votes": 120
+      },
+      {
+        "id": "o2",
+        "label": "Jarayon",
+        "votes": 45
+      }
+    ],
+    "isActive": true,
+    "endsAt": "2026-07-31T00:00:00Z"
+  }
+}

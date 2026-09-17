@@ -1,0 +1,20 @@
+{
+  "method": "GET",
+  "path": "/api/services/forum?page=1&pageSize=20",
+  "description": "O'quvchilar bilan ochiq muhokama maydoni — mavzular ro'yxati",
+  "response": {
+    "items": [
+      {
+        "id": "f1",
+        "title": "Yangi yo'l qurilishi haqida fikringiz",
+        "authorName": "Anvar",
+        "createdAt": "2026-06-20T10:00:00Z",
+        "replyCount": 5,
+        "lastReplyAt": "2026-06-25T14:00:00Z"
+      }
+    ],
+    "page": 1,
+    "pageSize": 20,
+    "total": 34
+  }
+}

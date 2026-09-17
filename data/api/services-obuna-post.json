@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "path": "/api/services/obuna",
+  "description": "Elektron obuna yozilish (telefon raqami majburiy, email ixtiyoriy)",
+  "request": {
+    "fullName": "Ism Familiya",
+    "phone": "+998901234567",
+    "email": "email@example.com",
+    "locale": "uz-latin"
+  },
+  "response": {
+    "success": true,
+    "message": "Obuna muvaffaqiyatli amalga oshirildi"
+  }
+}

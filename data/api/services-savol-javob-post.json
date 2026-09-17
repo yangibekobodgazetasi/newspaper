@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "path": "/api/services/savol-javob",
+  "description": "Yangi savol yuborish",
+  "request": {
+    "question": "Savol matni",
+    "askedBy": "Ism",
+    "email": "ism@example.com"
+  },
+  "response": {
+    "id": "q13",
+    "status": "pending",
+    "success": true
+  }
+}

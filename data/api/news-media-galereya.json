@@ -1,0 +1,18 @@
+{
+  "method": "GET",
+  "path": "/api/news/media-galereya?page=1&pageSize=24",
+  "description": "Tuman hayotidan fotosuratlar",
+  "response": {
+    "items": [
+      {
+        "id": "g1",
+        "imageUrl": "/gallery/2026-06-30-01.jpg",
+        "caption": "Yoshlar kuni tantanasi",
+        "publishedAt": "2026-06-30"
+      }
+    ],
+    "page": 1,
+    "pageSize": 24,
+    "total": 120
+  }
+}

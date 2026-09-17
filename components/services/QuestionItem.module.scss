@@ -1,0 +1,55 @@
+@use '../../styles/variables' as v;
+
+.item {
+  padding: v.$space-5 0;
+  border-bottom: 1px solid v.$line;
+
+  &:first-child { padding-top: 0; }
+  &:last-child { border-bottom: none; }
+}
+
+.q {
+  display: flex;
+  gap: v.$space-3;
+}
+
+.qIcon {
+  color: v.$river;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.qText {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: v.$space-2;
+}
+
+.meta {
+  display: flex;
+  gap: v.$space-3;
+  align-items: center;
+  font-family: v.$font-mono;
+  font-size: 11px;
+  color: v.$steel;
+}
+
+.answered, .pending {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.answered { color: v.$success; }
+.pending { color: v.$warning; }
+
+.a {
+  margin-left: 28px;
+  margin-top: v.$space-3;
+  background: v.$paper-dim;
+  border-radius: v.$radius-md;
+  padding: v.$space-4;
+  font-size: 13.5px;
+  color: v.$ink;
+  line-height: 1.55;
+}

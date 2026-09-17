@@ -1,0 +1,10 @@
+{
+  "method": "GET",
+  "path": "/api/about/maqsad-va-vazifalar",
+  "description": "Gazetaning maqsad va vazifalari",
+  "response": {
+    "title": "Maqsad va vazifalar",
+    "body": "<p>...</p>",
+    "updatedAt": "2026-06-01T00:00:00Z"
+  }
+}

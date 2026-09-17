@@ -1,0 +1,26 @@
+@use '../../styles/variables' as v;
+
+.strip {
+  display: flex;
+  gap: v.$space-2;
+  flex-wrap: wrap;
+  padding: v.$space-6 0;
+  border-bottom: 1px solid v.$line;
+}
+
+.chip {
+  font-family: v.$font-mono;
+  font-size: 11.5px;
+  padding: 7px 13px;
+  border: 1px solid v.$line;
+  border-radius: v.$radius-full;
+  color: v.$steel;
+  font-weight: 500;
+  background: v.$white;
+}
+
+.active {
+  background: v.$river-deep;
+  border-color: v.$river-deep;
+  color: v.$white;
+}

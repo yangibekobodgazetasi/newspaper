@@ -1,0 +1,16 @@
+{
+  "method": "POST",
+  "path": "/api/contact/murojaat",
+  "description": "Murojaat formasini yuborish (Nav'dagi \"Murojaat qoldirish\" tugmasi)",
+  "request": {
+    "fullName": "Ism Familiya",
+    "phone": "+998901234567",
+    "email": "ism@example.com",
+    "subject": "Mavzu",
+    "message": "Matn..."
+  },
+  "response": {
+    "success": true,
+    "ticketId": "M-2026-0456"
+  }
+}

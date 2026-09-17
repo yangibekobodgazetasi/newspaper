@@ -1,0 +1,115 @@
+// ============================================
+// YANGI BEKOBOD — lokal shriftlar (@font-face)
+// Google Fonts CDN o'rniga /public/fonts ichidagi statik fayllar ishlatiladi.
+// ============================================
+
+// --- Liberation Serif — katta title/headline uchun (Figma: "Liberation Serif") ---
+@font-face {
+  font-family: 'Liberation Serif';
+  src: url('/fonts/liberation-serif/LiberationSerif-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Liberation Serif';
+  src: url('/fonts/liberation-serif/LiberationSerif-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Liberation Serif';
+  src: url('/fonts/liberation-serif/LiberationSerif-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Liberation Serif';
+  src: url('/fonts/liberation-serif/LiberationSerif-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+// --- Tinos — YUQORIDAGI Liberation Serif fayllarining KIRILL to'ldiruvchisi ---
+// Mavjud LiberationSerif-*.woff fayllari lotin subseti: cmap U+00FF da tugaydi,
+// atigi 194 glif. Shu sababli /ru dagi har bir sarlavha shrift stekidan tushib
+// ketib, tizimning Times New Roman'ida chiqardi.
+// Tinos — Liberation Serif bilan bir xil Croscore dizayni (ikkalasi ham Times
+// metrikasiga mos), shuning uchun lotin va kirill harflar bir xil ko'rinadi.
+// `$font-serif` stekida Liberation Serif'dan KEYIN turadi: brauzer har bir
+// harfni alohida qidiradi — lotin Liberation'dan, kirill Tinos'dan olinadi.
+// `unicode-range` faqat yuklashni cheklaydi: /uz va /en sahifalarida bu
+// fayllar umuman so'ralmaydi.
+@font-face {
+  font-family: 'Tinos';
+  src: url('/fonts/tinos/Tinos-cyrillic-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Tinos';
+  src: url('/fonts/tinos/Tinos-cyrillic-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+// cyrillic-ext — o'zbek kirillidagi ғ (U+0493), қ (U+049B), ҳ (U+04B3) shu yerda.
+// Rus tilida deyarli kerak bo'lmaydi, shuning uchun alohida faylda qoldirilgan.
+@font-face {
+  font-family: 'Tinos';
+  src: url('/fonts/tinos/Tinos-cyrillic-ext-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Tinos';
+  src: url('/fonts/tinos/Tinos-cyrillic-ext-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+// --- Inter — kichik matnlar (o'zgaruvchan shrift, 100–900 og'irlik bitta faylda) ---
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter/Inter-latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter/Inter-cyrillic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+// --- JetBrains Mono — metama'lumot (sana, eyebrow) ---
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono/JetBrainsMono-latin.woff2') format('woff2');
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono/JetBrainsMono-cyrillic.woff2') format('woff2');
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}

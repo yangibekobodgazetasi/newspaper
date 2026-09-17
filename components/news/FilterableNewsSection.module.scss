@@ -1,0 +1,34 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: v.$space-5;
+
+  @include m.below(v.$bp-desktop) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/** Faqat katta karta qolganda (yonida kichik kartalar yo'q). */
+.gridSingle {
+  grid-template-columns: 1fr;
+}
+
+// Teskari holat: agar kichik kartalar soni kam bo'lsa (masalan 1–2 ta), qator
+// balandligini katta karta belgilaydi. `1fr` qatorlar bo'sh joyni o'zaro
+// bo'lishib oladi — pastda osilib qolgan bo'shliq qolmaydi. Kartalar soni
+// o'zgarganda (1, 2, 3 yoki 4 ta) ham shakl buzilmaydi.
+.subGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+  gap: v.$space-5;
+
+  @include m.mobile {
+    grid-template-columns: 1fr;
+    // Mobil'da bitta ustun: kartalar o'z balandligida qolsin, cho'zilmasin.
+    grid-auto-rows: auto;
+  }
+}

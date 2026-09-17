@@ -1,0 +1,21 @@
+{
+  "method": "GET",
+  "path": "/api/issues?page=1&pageSize=20",
+  "description": "\"Yangi Bekobod\" gazetasining barcha sonlari (haftalik yangilanadi)",
+  "response": {
+    "items": [
+      {
+        "id": "8043",
+        "number": 25,
+        "date": "2026-06-30",
+        "pages": 8,
+        "fileSize": "4.2 MB",
+        "pdfUrl": "/issues/8043.pdf",
+        "coverImage": "/issues/8043-cover.jpg"
+      }
+    ],
+    "page": 1,
+    "pageSize": 20,
+    "total": 25
+  }
+}

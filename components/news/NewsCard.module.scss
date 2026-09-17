@@ -1,0 +1,152 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+// --- Standart grid kartochka ---
+.card {
+  display: block;
+  background: v.$white;
+  border-radius: v.$radius-md;
+  overflow: hidden;
+  box-shadow: v.$shadow-sm;
+  transition: box-shadow .15s ease, transform .15s ease;
+
+  &:hover {
+    box-shadow: v.$shadow-md;
+    transform: translateY(-2px);
+  }
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+}
+
+.imageBadge {
+  position: absolute;
+  top: v.$space-3;
+  left: v.$space-3;
+}
+
+.title {
+  font-size: 15.5px;
+  margin: v.$space-3 v.$space-4 v.$space-2;
+  line-height: 1.32;
+  color: v.$ink;
+}
+
+.card:hover .title { color: v.$accent; }
+
+.excerpt {
+  font-size: 12.5px;
+  color: v.$steel;
+  line-height: 1.5;
+  margin: 0 v.$space-4 v.$space-3;
+  @include m.line-clamp(2);
+}
+
+.meta {
+  font-family: v.$font-mono;
+  font-size: 10.5px;
+  color: v.$steel;
+  margin: 0 v.$space-4 v.$space-4;
+}
+
+// --- Gradient placeholderlar (haqiqiy rasm ulanmagan bo'lsa) ---
+.gradient-1 { background-image: linear-gradient(150deg, v.$river-light, v.$river); }
+.gradient-2 { background-image: linear-gradient(150deg, v.$accent-light, v.$accent); }
+.gradient-3 { background-image: linear-gradient(150deg, #9FC6DE, v.$steel); }
+.gradient-4 { background-image: linear-gradient(150deg, v.$river, v.$river-deep); }
+
+// --- Katta ("bosh") kartochka — matn rasm ustida ---
+// Katta karta grid katagini TO'LIQ egallaydi. Busiz `<a>` stretch tufayli
+// qator balandligiga cho'zilardi-yu, ichidagi rasm `aspect-ratio` da qolib,
+// pastda bo'sh oq maydon paydo bo'lardi.
+.large {
+  display: block;
+  height: 100%;
+  border-radius: v.$radius-md;
+  overflow: hidden;
+  box-shadow: v.$shadow-sm;
+
+  &:hover { box-shadow: v.$shadow-md; }
+}
+
+.largeImage {
+  position: relative;
+  width: 100%;
+  // `height: 100%` faqat ota-elementning balandligi aniq bo'lganda ishlaydi —
+  // ya'ni yonidagi ustun balandroq bo'lib, karta cho'zilgan holatda.
+  // Aks holda `auto` ga tushadi va `aspect-ratio` + `min-height` shaklni belgilaydi.
+  height: 100%;
+  min-height: 320px;
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.largeOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(11,42,74,.92) 0%, rgba(11,42,74,.25) 60%, rgba(11,42,74,0) 100%);
+}
+
+.largeBadge {
+  position: absolute;
+  top: v.$space-4;
+  right: v.$space-4;
+  z-index: 1;
+}
+
+.largeContent {
+  position: relative;
+  z-index: 1;
+  padding: v.$space-5;
+
+  h3 {
+    font-size: 21px;
+    color: v.$white;
+    line-height: 1.28;
+    margin-bottom: v.$space-2;
+  }
+
+  p {
+    font-size: 13px;
+    color: rgba(255,255,255,.8);
+    line-height: 1.5;
+    margin-bottom: v.$space-4;
+    @include m.line-clamp(2);
+  }
+}
+
+.largeFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span:first-child {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: v.$font-mono;
+    font-size: 11px;
+    color: rgba(255,255,255,.7);
+  }
+}
+
+.largeArrow {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: v.$white;
+  backdrop-filter: blur(4px);
+}

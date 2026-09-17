@@ -1,0 +1,12 @@
+{
+  "method": "GET",
+  "path": "/api/about",
+  "description": "\"Yangi Bekobod\" gazetasi haqida umumiy ma'lumot",
+  "response": {
+    "title": "\"Yangi Bekobod\" gazetasi haqida",
+    "foundedYear": 1931,
+    "founder": "Bekobod tumani hokimligi",
+    "body": "<p>HTML yoki Markdown formatidagi kontent...</p>",
+    "updatedAt": "2026-06-01T00:00:00Z"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "method": "GET",
+  "path": "/api/team",
+  "description": "\"Yangi Bekobod\" DMning xodimlari haqidagi ma'lumotlar",
+  "response": {
+    "items": [
+      {
+        "id": "t1",
+        "name": "Sarvinoz Sheraliyeva",
+        "role": "Bosh muharrir",
+        "photo": "/team/sarvinoz.jpg",
+        "email": null,
+        "phone": null
+      }
+    ]
+  }
+}

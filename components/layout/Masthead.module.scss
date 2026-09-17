@@ -1,0 +1,178 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.masthead {
+  background: v.$paper;
+  border-bottom: 1px solid v.$line;
+  padding: 20px 0;
+}
+
+.inner {
+  @include m.wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: v.$space-5;
+
+  // MUHIM (RU/EN uchun): tarjimalar uzunligi tildan tilga sezilarli farq qiladi
+  // (RU tagline UZ'dan ~25% uzun). `flex-wrap: wrap` bilan brend bloki kengayib,
+  // qidiruv+til tanlagich ikkinchi qatorga tushib ketardi — ya'ni header /ru da
+  // butunlay boshqacha ko'rinardi. Desktopda qatorni qat'iy bitta qilamiz va
+  // faqat brend blokiga qisqarishga ruxsat beramiz (matn ichida o'raladi).
+  // Desktopdan pastda wrap saqlanadi — u yerdagi mavjud responsive xulq o'zgarmaydi.
+  @include m.desktop {
+    flex-wrap: nowrap;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: v.$space-4;
+  color: inherit;
+
+  // `min-width: 0` bo'lmasa flex element o'z min-content kengligidan qisqarmaydi
+  // va uzun tagline butun qatorni kengaytirib yuboradi.
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.brandText {
+  min-width: 0;
+}
+
+.mark {
+  width: 56px;
+  height: auto; // logo PNG'ning haqiqiy aspect-ratio'sini saqlaydi (384x428)
+  flex-shrink: 0;
+}
+
+.name {
+  font-size: 32px;
+  color: v.$title-blue;
+  letter-spacing: -0.01em;
+  white-space: nowrap; // gazeta nomi hech qachon ikkiga bo'linmasin
+
+  @include m.mobile { font-size: 24px; }
+}
+
+.tagline {
+  font-size: 12.5px;
+  color: v.$steel;
+  margin-top: 2px;
+
+  @include m.below(v.$bp-desktop) { display: none; }
+}
+
+.meta {
+  font-family: v.$font-mono;
+  font-size: 11.5px;
+  color: v.$steel;
+  line-height: 1.7;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  @include m.below(1200px) { display: none; }
+}
+
+.issue {
+  color: v.$river-deep;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  margin-left: auto;
+
+  @include m.desktop {
+    // Qidiruv + til tanlagich hech qachon siqilmasin — o'rin kerak bo'lsa
+    // brend bloki qisqaradi (u yerda `min-width: 0` qo'yilgan).
+    flex-shrink: 0;
+  }
+
+  // Desktopdan pastda tagline va meta yashiriladi, ya'ni brend bloki qisqaradi.
+  // Qidiruv qolgan bo'sh joyni egallasin; joy yetmay wrap bo'lsa — to'liq qatorni.
+  // (`margin-left: auto` bo'sh joyni o'ziga olib, flex-grow'ga hech narsa qoldirmaydi.)
+  @include m.below(v.$bp-desktop) {
+    flex: 1 1 auto;
+    margin-left: 0;
+    min-width: 0;
+  }
+
+  @include m.mobile {
+    width: 100%;
+    order: 3;
+  }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: v.$space-2;
+  background: v.$paper-dim;
+  border: 1px solid v.$line;
+  border-radius: v.$radius-full;
+  padding: 9px 14px;
+  color: v.$steel;
+  flex: 1;
+  min-width: 220px;
+
+  @include m.mobile {
+    min-width: 0;
+  }
+
+  input {
+    border: none;
+    background: none;
+    font-size: 13px;
+    font-family: v.$font-sans;
+    color: v.$ink;
+    flex: 1;
+    outline: none;
+
+    &::placeholder { color: v.$steel; }
+  }
+
+  kbd {
+    font-family: v.$font-mono;
+    font-size: 10.5px;
+    color: v.$steel;
+    background: v.$white;
+    border: 1px solid v.$line;
+    border-radius: v.$radius-sm;
+    padding: 2px 6px;
+
+    @include m.below(v.$bp-desktop) { display: none; }
+  }
+}
+
+.langs {
+  display: flex;
+  gap: 2px;
+  background: v.$paper-dim;
+  border: 1px solid v.$line;
+  border-radius: v.$radius-full;
+  padding: 3px;
+  flex-shrink: 0;
+
+  button {
+    background: none;
+    border: none;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: v.$steel;
+    padding: 6px 12px;
+    border-radius: v.$radius-full;
+    font-family: v.$font-sans;
+  }
+}
+
+.active {
+  color: v.$river-deep !important;
+  background: v.$white !important;
+  box-shadow: v.$shadow-sm;
+}

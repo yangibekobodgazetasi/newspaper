@@ -1,0 +1,62 @@
+@use '../../styles/variables' as v;
+
+.widget {
+  background: v.$white;
+  border-radius: v.$radius-md;
+  padding: v.$space-5;
+  box-shadow: v.$shadow-sm;
+  height: 100%;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: v.$space-4;
+  padding-bottom: v.$space-3;
+  border-bottom: 1px solid v.$line;
+
+  h5 { font-family: v.$font-serif; font-size: 15px; color: v.$title-blue; }
+}
+
+.headIcon {
+  color: v.$accent;
+}
+
+.item {
+  display: block;
+  padding: v.$space-3 0;
+  border-bottom: 1px solid v.$line;
+
+  &:last-of-type { border-bottom: none; }
+
+  h4 {
+    font-size: 13.5px;
+    line-height: 1.4;
+    color: v.$ink;
+    margin-top: 4px;
+  }
+
+  &:hover h4 { color: v.$accent; }
+}
+
+.rubric {
+  font-family: v.$font-mono;
+  font-size: 10px;
+  font-weight: 700;
+  color: v.$accent;
+  letter-spacing: .04em;
+}
+
+.seeAll {
+  display: block;
+  text-align: center;
+  margin-top: v.$space-4;
+  font-size: 12px;
+  font-weight: 700;
+  color: v.$river-deep;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+
+  &:hover { color: v.$accent; }
+}

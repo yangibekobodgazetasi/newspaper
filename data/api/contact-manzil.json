@@ -1,0 +1,12 @@
+{
+  "method": "GET",
+  "path": "/api/contact/manzil",
+  "description": "Tashkilot manzili va aloqa kanallari",
+  "response": {
+    "address": "\"Zafar\" shaharchasi, hokimiyat binosi, 3-qavat",
+    "phone": "(998) 55 902 59 94",
+    "email": "yangibekobod@umail.uz",
+    "mapLat": 40.2168,
+    "mapLng": 69.2762
+  }
+}

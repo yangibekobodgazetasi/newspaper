@@ -1,0 +1,60 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.main {
+  @include m.wrap;
+  padding-top: v.$space-8;
+}
+
+.newsLayout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: v.$space-8;
+
+  @include m.below(v.$bp-desktop) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.subscribeText {
+  font-size: 13px;
+  color: v.$steel;
+  line-height: 1.6;
+  margin-bottom: v.$space-4;
+}
+
+.servicesLayout {
+  display: grid;
+  grid-template-columns: 2.4fr 1fr;
+  gap: v.$space-8;
+  margin-top: v.$space-10;
+
+  @include m.below(v.$bp-desktop) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.services {
+  @include m.grid(4, v.$space-5);
+
+  @include m.below(v.$bp-desktop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.trendingWrap {
+  margin-top: v.$space-10; // SectionHead balandligiga moslash
+}
+
+.archiveWrap {
+  @include m.wrap;
+}
+
+.team {
+  @include m.grid(4, v.$space-5);
+  padding-bottom: v.$space-12;
+
+  @include m.below(v.$bp-desktop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

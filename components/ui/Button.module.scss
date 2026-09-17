@@ -1,0 +1,47 @@
+@use '../../styles/variables' as v;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: v.$space-2;
+  font-family: v.$font-sans;
+  font-weight: 700;
+  border: none;
+  border-radius: v.$radius-md;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+  white-space: nowrap;
+}
+
+// --- Variantlar ---
+.primary {
+  background: v.$accent;
+  color: v.$white;
+
+  &:hover { background: v.$river; }
+}
+
+.outline {
+  background: transparent;
+  border: 1px solid v.$line;
+  color: v.$river-deep;
+
+  &:hover { border-color: v.$accent; color: v.$accent; }
+}
+
+.ghost {
+  background: transparent;
+  color: v.$river;
+
+  &:hover { color: v.$accent; }
+}
+
+// --- O'lchamlar ---
+.sm { padding: 6px 12px; font-size: 12px; }
+.md { padding: 9px 16px; font-size: 13px; }
+.lg { padding: 12px 22px; font-size: 14.5px; }
+
+.fullWidth {
+  width: 100%;
+}

@@ -1,0 +1,79 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.footer {
+  background: v.$river-deep;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: v.$space-12;
+  padding: 44px 0 0;
+}
+
+.grid {
+  @include m.wrap;
+  display: grid;
+  // Brend ustuni + 4 ta navigatsiya ustuni (Gazeta haqida/Yangiliklar/Interaktiv xizmatlar/Aloqalar) — 5 ustun jami
+  grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+  gap: v.$space-8;
+  padding-bottom: v.$space-8;
+
+  @include m.below(v.$bp-desktop) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include m.mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.heading {
+  color: v.$white;
+  font-family: v.$font-sans;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: v.$space-4;
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  margin-bottom: v.$space-3;
+}
+
+.brandMark {
+  width: 44px;
+  height: auto; // logo PNG'ning haqiqiy aspect-ratio'sini saqlaydi
+  flex-shrink: 0;
+}
+
+.brandName {
+  color: v.$white;
+  font-size: 18px;
+}
+
+.about {
+  font-size: 12.5px;
+  line-height: 1.8;
+}
+
+.link {
+  display: block;
+  font-size: 12.5px;
+  padding: 5px 0;
+  color: rgba(255, 255, 255, 0.7);
+
+  &:hover { color: v.$accent-light; }
+}
+
+.bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: v.$space-4 v.$space-6;
+  text-align: center;
+  font-size: 11.5px;
+  font-family: v.$font-mono;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.dot {
+  margin: 0 v.$space-2;
+  color: rgba(255, 255, 255, 0.25);
+}

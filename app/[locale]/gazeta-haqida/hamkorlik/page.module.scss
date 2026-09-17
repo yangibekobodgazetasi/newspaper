@@ -1,0 +1,35 @@
+@use '../../../../styles/variables' as v;
+@use '../../../../styles/mixins' as m;
+
+.partners {
+  @include m.grid(2, v.$space-4);
+
+  @include m.mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.partner {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  background: v.$paper-dim;
+  border-radius: v.$radius-md;
+  padding: v.$space-4;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.icon {
+  color: v.$river;
+  flex-shrink: 0;
+}
+
+// Hamkor logotipi (PARTNER_LOGO spetsifikatsiyasi — 2:1, shaffof fon).
+// `contain` — logotip cho'zilmasin, o'z nisbatini saqlasin.
+.logo {
+  width: 56px;
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+}

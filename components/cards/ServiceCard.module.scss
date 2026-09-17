@@ -1,0 +1,38 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.card {
+  @include m.card-base;
+  display: block;
+  padding: v.$space-6 v.$space-5;
+  box-shadow: v.$shadow-sm;
+  text-align: center;
+
+  &:hover { box-shadow: v.$shadow-md; transform: translateY(-2px); }
+}
+
+.iconWrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto v.$space-4;
+}
+
+.green  { background: v.$badge-green-bg; color: v.$badge-green-fg; }
+.blue   { background: v.$badge-blue-bg; color: v.$badge-blue-fg; }
+.purple { background: v.$badge-purple-bg; color: v.$badge-purple-fg; }
+.orange { background: v.$badge-orange-bg; color: v.$badge-orange-fg; }
+
+.title {
+  font-size: 15px;
+  margin-bottom: v.$space-2;
+}
+
+.desc {
+  font-size: 12px;
+  color: v.$steel;
+  line-height: 1.5;
+}

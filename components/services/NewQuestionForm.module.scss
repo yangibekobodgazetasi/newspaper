@@ -1,0 +1,68 @@
+@use '../../styles/variables' as v;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-3;
+  background: v.$paper-dim;
+  border-radius: v.$radius-md;
+  padding: v.$space-5;
+  margin-bottom: v.$space-8;
+}
+
+.row {
+  display: flex;
+  gap: v.$space-3;
+
+  .field { flex: 1; }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-1;
+}
+
+.input, .textarea {
+  font-family: v.$font-sans;
+  font-size: 13.5px;
+  padding: v.$space-3;
+  border: 1px solid v.$line;
+  border-radius: v.$radius-sm;
+  background: v.$white;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+    border-color: v.$accent;
+  }
+}
+
+.textarea { resize: vertical; }
+
+.invalid {
+  border-color: v.$danger;
+
+  &:focus {
+    border-color: v.$danger;
+  }
+}
+
+.fieldError {
+  color: v.$danger;
+  font-size: 12.5px;
+}
+
+.success {
+  background: v.$paper-dim;
+  border-radius: v.$radius-md;
+  padding: v.$space-5;
+  font-size: 14px;
+  color: v.$success;
+  margin-bottom: v.$space-8;
+}
+
+.error {
+  color: v.$danger;
+  font-size: 12.5px;
+}

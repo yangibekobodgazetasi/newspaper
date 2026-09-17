@@ -1,0 +1,38 @@
+@use '../../styles/variables' as v;
+
+.figure {
+  border-radius: v.$radius-md;
+  overflow: hidden;
+  border: 1px solid v.$line;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+}
+
+.gradient-1 { background: linear-gradient(150deg, v.$river-light, v.$river); }
+.gradient-2 { background: linear-gradient(150deg, v.$accent-light, v.$accent); }
+.gradient-3 { background: linear-gradient(150deg, #9FC6DE, v.$steel); }
+.gradient-4 { background: linear-gradient(150deg, v.$river, v.$river-deep); }
+
+.caption {
+  padding: v.$space-3;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  span {
+    font-size: 12.5px;
+    color: v.$ink;
+    line-height: 1.4;
+  }
+
+  time {
+    font-family: v.$font-mono;
+    font-size: 10.5px;
+    color: v.$steel;
+  }
+}

@@ -1,0 +1,137 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.section {
+  margin: v.$space-10 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 2.3fr 1fr;
+  gap: v.$space-6;
+  align-items: stretch;
+
+  @include m.below(v.$bp-desktop) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.scrollWrap {
+  position: relative;
+  // MUHIM: grid element (grid item) uchun standart `min-width: auto` uning min-content
+  // o'lchamiga teng bo'ladi — bu yerda ichkaridagi barcha kartochkalar yig'indisi (~1104px).
+  // Natijada `1fr` trek konteynerdan kengroq bo'lib, bo'lim o'ng chekkasidan chiqib ketardi
+  // va `.scroll` umuman skroll qilmasdan hammasini cho'zib ko'rsatardi.
+  // `min-width: 0` trekka konteyner kengligiga qisqarishga ruxsat beradi va gorizontal
+  // skroll o'z vazifasini bajaradi.
+  min-width: 0;
+}
+
+.scroll {
+  display: flex;
+  gap: v.$space-5;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding: 2px;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.item {
+  flex: 0 0 140px;
+  scroll-snap-align: start;
+}
+
+.cover {
+  aspect-ratio: 3 / 4;
+  border-radius: v.$radius-sm;
+  background: linear-gradient(160deg, v.$river-light, v.$river);
+  background-size: cover;
+  background-position: center;
+  border: 1px solid v.$line;
+  margin-bottom: v.$space-2;
+  box-shadow: v.$shadow-sm;
+  transition: transform .15s ease;
+}
+
+.item:hover .cover {
+  transform: translateY(-3px);
+}
+
+.num {
+  font-family: v.$font-mono;
+  font-weight: 700;
+  font-size: 13px;
+  color: v.$ink;
+}
+
+.d {
+  font-family: v.$font-mono;
+  font-size: 10.5px;
+  color: v.$steel;
+}
+
+.arrow {
+  position: absolute;
+  top: 40%;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: v.$white;
+  border: 1px solid v.$line;
+  box-shadow: v.$shadow-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: v.$river-deep;
+  z-index: 2;
+
+  &:hover { background: v.$accent; color: v.$white; }
+
+  @include m.mobile { display: none; }
+}
+
+.arrowLeft { left: -14px; }
+.arrowRight { right: -14px; }
+
+// --- Video promo karta ---
+.promo {
+  position: relative;
+  border-radius: v.$radius-md;
+  overflow: hidden;
+  min-height: 220px;
+  background: linear-gradient(160deg, v.$river-light, v.$river-deep);
+  display: flex;
+  align-items: flex-end;
+  box-shadow: v.$shadow-sm;
+
+  @include m.below(v.$bp-desktop) { min-height: 160px; }
+}
+
+// Standart holat — gradient. Admin panelda rasm tanlansa, `background-image`
+// inline style bilan ustiga qo'yiladi (gradient fallback sifatida qoladi).
+.promoImage {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(150deg, #64748B, v.$river-deep);
+  background-size: cover;
+  background-position: center;
+}
+
+.promoOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(11,42,74,.85), rgba(11,42,74,.15));
+}
+
+.promoContent {
+  position: relative;
+  z-index: 1;
+  padding: v.$space-5;
+
+  h4 {
+    color: v.$white;
+    font-size: 17px;
+    line-height: 1.3;
+  }
+}

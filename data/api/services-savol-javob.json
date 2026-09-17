@@ -1,0 +1,20 @@
+{
+  "method": "GET",
+  "path": "/api/services/savol-javob?page=1&pageSize=20",
+  "description": "Muharririyatga yuborilgan savol-javoblar",
+  "response": {
+    "items": [
+      {
+        "id": "q1",
+        "question": "Obuna qanday amalga oshiriladi?",
+        "answer": "Elektron obuna orqali bepul.",
+        "askedBy": "Nodira",
+        "status": "answered",
+        "createdAt": "2026-06-10T09:00:00Z"
+      }
+    ],
+    "page": 1,
+    "pageSize": 20,
+    "total": 12
+  }
+}

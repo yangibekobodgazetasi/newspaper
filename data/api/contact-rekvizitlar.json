@@ -1,0 +1,12 @@
+{
+  "method": "GET",
+  "path": "/api/contact/rekvizitlar",
+  "description": "Tashkilotning rasmiy rekvizitlari",
+  "response": {
+    "founder": "Bekobod tumani hokimligi",
+    "legalAddress": "...",
+    "bankAccount": null,
+    "inn": null,
+    "issn": "2091-5497"
+  }
+}

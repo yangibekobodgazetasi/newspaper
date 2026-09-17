@@ -1,0 +1,36 @@
+@use '../../styles/variables' as v;
+
+.tile {
+  display: flex;
+  align-items: center;
+  gap: v.$space-4;
+  background: v.$white;
+  border: 1px solid v.$line;
+  border-radius: v.$radius-md;
+  padding: v.$space-5 v.$space-6;
+  transition: border-color .15s ease;
+
+  &:hover {
+    border-color: v.$accent;
+
+    .arrow { transform: translateX(3px); }
+  }
+}
+
+.icon {
+  color: v.$river;
+  flex-shrink: 0;
+}
+
+.text {
+  flex: 1;
+
+  h4 { font-size: 15.5px; margin-bottom: 3px; }
+  p { font-size: 12.5px; color: v.$steel; }
+}
+
+.arrow {
+  color: v.$river;
+  transition: transform .15s ease;
+  flex-shrink: 0;
+}
