@@ -25,16 +25,16 @@ export default function DataTable<T>({ columns, rows, keyField, emptyText = "Ma'
       <table className={styles.table}>
         <thead>
           <tr>
-            {columns.map((col) => (
-              <th key={col.header} style={{ width: col.width }}>{col.header}</th>
+            {columns.map((col, i) => (
+              <th key={i} style={{ width: col.width }}>{col.header}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {rows.map((row) => (
             <tr key={String(row[keyField])}>
-              {columns.map((col) => (
-                <td key={col.header}>{col.render(row)}</td>
+              {columns.map((col, i) => (
+                <td key={i}>{col.render(row)}</td>
               ))}
             </tr>
           ))}
