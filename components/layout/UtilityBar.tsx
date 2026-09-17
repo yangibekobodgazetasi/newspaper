@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
-import { Send, Facebook, Instagram, Youtube } from 'lucide-react';
+import { Send } from 'lucide-react';
+import { Facebook, Instagram, Youtube } from './SocialIcons';
 import styles from './UtilityBar.module.scss';
 
 const SOCIAL_LINKS = [

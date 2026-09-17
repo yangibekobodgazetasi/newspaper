@@ -5,10 +5,6 @@ import SubscribeForm from '@/components/services/SubscribeForm';
 import { buildMetadata } from '@/lib/seo';
 import styles from '../../aloqalar/page.module.scss';
 
-// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
-// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
-export const instant = false;
-
 interface SubscribePageProps {
   params: Promise<{ locale: string }>;
 }
