@@ -1,0 +1,76 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.head {
+  margin-bottom: v.$space-4;
+}
+
+.title {
+  font-size: 15px;
+  margin-bottom: v.$space-1;
+}
+
+.hint {
+  font-size: 12.5px;
+  color: v.$steel;
+}
+
+.empty {
+  font-size: 13px;
+  color: v.$steel;
+
+  code {
+    font-family: v.$font-mono;
+    background: v.$paper-dim;
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+}
+
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: v.$space-5;
+
+  @include m.below(v.$bp-tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.row {
+  border: 1px solid v.$line;
+  border-radius: v.$radius-sm;
+  padding: v.$space-4;
+}
+
+.name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: v.$ink;
+  margin-bottom: v.$space-3;
+}
+
+.error {
+  color: v.$danger;
+  font-size: 12.5px;
+  margin-top: v.$space-3;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: v.$space-4;
+  margin-top: v.$space-4;
+  padding-top: v.$space-4;
+  border-top: 1px solid v.$line;
+}
+
+.saved {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: v.$success;
+  font-size: 12.5px;
+  font-weight: 600;
+}

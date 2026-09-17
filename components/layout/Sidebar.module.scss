@@ -1,0 +1,129 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+$collapsed-width: 68px;
+
+// BALANDLIK BYUDJETI
+// ------------------
+// SUPER_ADMIN da 19 ta menyu bandi bor. Avvalgi o'lchamlarda (24px sidebar
+// padding, 24px brand padding, 10px link padding) umumiy balandlik ~933px edi —
+// noutbuk ekranida (1440x900 da ko'rinadigan maydon ~760px) menyu sig'masdi va
+// doim scroll qilishga to'g'ri kelardi.
+//
+// Har bir band 10px o'rniga 7px vertikal padding oladi => qator balandligi 32px.
+// Bu admin panellar uchun standart o'lcham (GitHub ~32px, Notion ~27px), ya'ni
+// zichlik oshgani bilan bosish qulayligi yo'qolmaydi. Jami tejalgan: ~165px.
+$nav-item-pad-y: 7px;
+
+.sidebar {
+  width: v.$sidebar-width;
+  background: v.$sidebar-bg;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: v.$space-3 0;
+  transition: width .18s ease;
+  z-index: 20;
+
+  @include m.below(v.$bp-tablet) {
+    display: none;
+  }
+}
+
+.collapsed {
+  width: $collapsed-width;
+
+  .brand { justify-content: center; padding: 0 0 v.$space-3; }
+  // Yig'ilgan holatda ham qator balandligi kengaytirilgan holat bilan bir xil
+  // qolishi uchun vertikal padding o'zgarmaydi, faqat gorizontali qisqaradi.
+  .link { justify-content: center; padding: $nav-item-pad-y 10px; }
+  .toggle { justify-content: center; padding: $nav-item-pad-y 10px; }
+  .label { display: none; }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  padding: 0 v.$space-5 v.$space-3;
+  color: v.$white;
+  font-weight: 700;
+  font-size: 14.5px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  margin-bottom: v.$space-3;
+}
+
+// Haqiqiy logotip (avvalgi "YB" dumaloq belgisi o'rniga). Manba rasm kvadratga
+// yaqin (489x510), shuning uchun `object-fit: contain` bilan nisbat saqlanadi —
+// yig'ilgan holatda ham cho'zilib ketmaydi.
+.mark {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 v.$space-3;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  padding: $nav-item-pad-y 14px;
+  border-radius: v.$radius-sm;
+  color: rgba(255,255,255,.65);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(255,255,255,.06);
+    color: v.$white;
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.active {
+  background: v.$accent;
+  color: v.$river-deep;
+  font-weight: 700;
+
+  &:hover {
+    background: v.$accent;
+    color: v.$river-deep;
+  }
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  margin: v.$space-3 v.$space-3 0;
+  padding: $nav-item-pad-y 14px;
+  border-radius: v.$radius-sm;
+  background: none;
+  border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.6);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(255,255,255,.06);
+    color: v.$white;
+  }
+}

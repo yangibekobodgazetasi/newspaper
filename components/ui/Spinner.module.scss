@@ -1,0 +1,15 @@
+@use '../../styles/variables' as v;
+
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 2.5px solid v.$line;
+  border-top-color: v.$river;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  margin: v.$space-6 auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

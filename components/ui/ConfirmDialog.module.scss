@@ -1,0 +1,50 @@
+@use '../../styles/variables' as v;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 61, 98, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.dialog {
+  background: v.$white;
+  border-radius: v.$radius-md;
+  padding: v.$space-6;
+  max-width: 380px;
+  width: 90%;
+  box-shadow: 0 20px 48px rgba(10, 61, 98, .25);
+}
+
+.title {
+  font-size: 16px;
+  margin-bottom: v.$space-2;
+}
+
+.desc {
+  font-size: 13px;
+  color: v.$steel;
+  margin-bottom: v.$space-5;
+  line-height: 1.5;
+}
+
+/* O'chirish rad etilganda (masalan rasm boshqa yozuvlarda ishlatilayotgan bo'lsa) — dialog ichida ko'rsatiladi. */
+.error {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: v.$danger;
+  background: rgba(214, 69, 69, .08);
+  border: 1px solid rgba(214, 69, 69, .25);
+  border-radius: v.$radius-sm;
+  padding: v.$space-3;
+  margin-bottom: v.$space-4;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: v.$space-3;
+}
