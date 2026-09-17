@@ -20,11 +20,21 @@ import { getHomePromo, getHomeStats } from '@/lib/home';
 
 import styles from './page.module.scss';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface HomePageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: HomePageProps): Promise<Metadata> {
+export async function generateMetadata(props: HomePageProps): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const t = await getTranslations({ locale });
   return {
     ...buildMetadata({
@@ -37,7 +47,13 @@ export async function generateMetadata({ params: { locale } }: HomePageProps): P
   };
 }
 
-export default async function HomePage({ params: { locale } }: HomePageProps) {
+export default async function HomePage(props: HomePageProps) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const t = await getTranslations();
 
   const [kundalik, featured, rahbariyat, elonlar, issues, team, promo, stats] = await Promise.all([

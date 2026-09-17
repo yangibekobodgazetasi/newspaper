@@ -19,8 +19,12 @@ import { routing } from '@/i18n/routing';
 import type { NewsCategorySlug } from '@/types';
 import styles from './page.module.scss';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface PageProps {
-  params: { locale: string; category: string; slug: string };
+  params: Promise<{ locale: string; category: string; slug: string }>;
 }
 
 // Media-galereya toifasida alohida maqola sahifasi yo'q — faqat qolgan toifalar uchun generatsiya qilamiz.
@@ -34,7 +38,8 @@ export async function generateStaticParams({ params }: { params: { locale: strin
   return categories.flatMap((c, i) => lists[i].map((n) => ({ category: c.slug, slug: n.slug })));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const meta = await getCategoryMeta(params.category, params.locale);
   if (!meta) return {};
   const item = await getNewsBySlug(params.category as NewsCategorySlug, params.slug, params.locale);
@@ -66,7 +71,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   });
 }
 
-export default async function NewsArticlePage({ params }: PageProps) {
+export default async function NewsArticlePage(props: PageProps) {
+  const params = await props.params;
   const { locale, category, slug } = params;
   const t = await getTranslations();
   const meta = await getCategoryMeta(category, locale);

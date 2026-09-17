@@ -3,16 +3,32 @@ import { getXaridorlarUchun } from '@/lib/contact';
 import { buildMetadata } from '@/lib/seo';
 import styles from './page.module.scss';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface SubscribersPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: SubscribersPageProps): Promise<Metadata> {
+export async function generateMetadata(props: SubscribersPageProps): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const content = await getXaridorlarUchun(locale);
   return buildMetadata({ locale, path: '/aloqalar/xaridorlar-uchun', title: content.title, description: content.body?.[0] });
 }
 
-export default async function SubscribersPage({ params: { locale } }: SubscribersPageProps) {
+export default async function SubscribersPage(props: SubscribersPageProps) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const content = await getXaridorlarUchun(locale);
 
   return (

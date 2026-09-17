@@ -6,11 +6,21 @@ import { getQuestions } from '@/lib/services';
 import { buildMetadata } from '@/lib/seo';
 import styles from '../../aloqalar/page.module.scss';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface QAPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: QAPageProps): Promise<Metadata> {
+export async function generateMetadata(props: QAPageProps): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const t = await getTranslations({ locale });
   return buildMetadata({ locale, path: '/xizmatlar/savol-javob', title: t('nav.servicesQa'), description: t('services.qaLead') });
 }

@@ -7,16 +7,32 @@ import { buildMetadata } from '@/lib/seo';
 import type { Issue } from '@/types';
 import styles from './page.module.scss';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface IssuesArchivePageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: IssuesArchivePageProps): Promise<Metadata> {
+export async function generateMetadata(props: IssuesArchivePageProps): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const t = await getTranslations({ locale });
   return buildMetadata({ locale, path: '/sonlar-arxivi', title: t('nav.issues'), description: t('issues.archiveLead') });
 }
 
-export default async function IssuesArchivePage({ params: { locale } }: IssuesArchivePageProps) {
+export default async function IssuesArchivePage(props: IssuesArchivePageProps) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const t = await getTranslations({ locale });
   const issues = await getSortedIssues();
 

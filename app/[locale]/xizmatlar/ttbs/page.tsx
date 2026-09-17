@@ -5,16 +5,32 @@ import { getFaq } from '@/lib/services';
 import { buildMetadata } from '@/lib/seo';
 import styles from '../../aloqalar/page.module.scss';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface FaqPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: FaqPageProps): Promise<Metadata> {
+export async function generateMetadata(props: FaqPageProps): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const t = await getTranslations({ locale, namespace: 'services' });
   return buildMetadata({ locale, path: '/xizmatlar/ttbs', title: t('faqTitle'), description: t('faqLead') });
 }
 
-export default async function FaqPage({ params: { locale } }: FaqPageProps) {
+export default async function FaqPage(props: FaqPageProps) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const t = await getTranslations('services');
   const faq = await getFaq(locale);
   return (

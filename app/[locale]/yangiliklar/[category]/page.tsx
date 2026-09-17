@@ -11,8 +11,12 @@ import { buildMetadata } from '@/lib/seo';
 import type { NewsCategorySlug } from '@/types';
 import styles from './page.module.scss';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface PageProps {
-  params: { locale: string; category: string };
+  params: Promise<{ locale: string; category: string }>;
 }
 
 // Statik eksport uchun barcha toifalarni oldindan generatsiya qilamiz (backend'dan dinamik olinadi).
@@ -22,7 +26,8 @@ export async function generateStaticParams({ params }: { params: { locale: strin
   return categories.map((c) => ({ category: c.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const meta = await getCategoryMeta(params.category, params.locale);
   if (!meta) return {};
   // Toifa slug'i (NewsCategory.slug) locale'dan mustaqil — barcha tillar uchun bir xil yo'l.
@@ -34,7 +39,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   });
 }
 
-export default async function NewsCategoryPage({ params }: PageProps) {
+export default async function NewsCategoryPage(props: PageProps) {
+  const params = await props.params;
   const { locale, category } = params;
   const t = await getTranslations('nav');
   const meta = await getCategoryMeta(category, locale);

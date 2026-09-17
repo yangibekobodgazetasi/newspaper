@@ -11,8 +11,12 @@ import { resolveImageUrl, resolveUploadUrl } from '@/lib/api';
 import { buildMetadata } from '@/lib/seo';
 import styles from './page.module.scss';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface PageProps {
-  params: { locale: string; id: string };
+  params: Promise<{ locale: string; id: string }>;
 }
 
 export async function generateStaticParams() {
@@ -20,7 +24,8 @@ export async function generateStaticParams() {
   return issues.map((issue) => ({ id: issue.id }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const issue = await getIssueById(params.id);
   if (!issue) return {};
   const t = await getTranslations({ locale: params.locale });
@@ -33,7 +38,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   });
 }
 
-export default async function IssueDetailPage({ params }: PageProps) {
+export default async function IssueDetailPage(props: PageProps) {
+  const params = await props.params;
   const t = await getTranslations();
   const issue = await getIssueById(params.id);
   if (!issue) notFound();

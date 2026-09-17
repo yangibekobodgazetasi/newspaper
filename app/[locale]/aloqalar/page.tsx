@@ -6,11 +6,21 @@ import LinkTile from '@/components/ui/LinkTile';
 import { buildMetadata } from '@/lib/seo';
 import styles from './page.module.scss';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface ContactIndexPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: ContactIndexPageProps): Promise<Metadata> {
+export async function generateMetadata(props: ContactIndexPageProps): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const t = await getTranslations({ locale });
   return buildMetadata({ locale, path: '/aloqalar', title: t('nav.contact'), description: t('contact.indexLead') });
 }

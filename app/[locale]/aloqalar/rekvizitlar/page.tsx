@@ -4,11 +4,21 @@ import { getRekvizitlar } from '@/lib/contact';
 import { buildMetadata } from '@/lib/seo';
 import styles from './page.module.scss';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface RequisitesPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: RequisitesPageProps): Promise<Metadata> {
+export async function generateMetadata(props: RequisitesPageProps): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const [t, r] = await Promise.all([getTranslations({ locale }), getRekvizitlar(locale)]);
   return buildMetadata({
     locale,
@@ -18,7 +28,13 @@ export async function generateMetadata({ params: { locale } }: RequisitesPagePro
   });
 }
 
-export default async function RequisitesPage({ params: { locale } }: RequisitesPageProps) {
+export default async function RequisitesPage(props: RequisitesPageProps) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const t = await getTranslations();
   const r = await getRekvizitlar(locale);
 

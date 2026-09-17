@@ -6,16 +6,32 @@ import { getAboutContent } from '@/lib/about';
 import { buildMetadata } from '@/lib/seo';
 import styles from './page.module.scss';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface AntiCorruptionPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: AntiCorruptionPageProps): Promise<Metadata> {
+export async function generateMetadata(props: AntiCorruptionPageProps): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const content = await getAboutContent('korrupsiyaga-qarshi-kurashish', locale);
   return buildMetadata({ locale, path: '/gazeta-haqida/korrupsiyaga-qarshi-kurashish', title: content.title, description: content.intro });
 }
 
-export default async function AntiCorruptionPage({ params: { locale } }: AntiCorruptionPageProps) {
+export default async function AntiCorruptionPage(props: AntiCorruptionPageProps) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const t = await getTranslations('about');
   const content = await getAboutContent('korrupsiyaga-qarshi-kurashish', locale);
   return (

@@ -3,16 +3,32 @@ import AboutArticle from '@/components/about/AboutArticle';
 import { getAboutContent } from '@/lib/about';
 import { buildMetadata } from '@/lib/seo';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface AboutPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: AboutPageProps): Promise<Metadata> {
+export async function generateMetadata(props: AboutPageProps): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const content = await getAboutContent('umumiy', locale);
   return buildMetadata({ locale, path: '/gazeta-haqida', title: content.title, description: content.intro });
 }
 
-export default async function AboutPage({ params: { locale } }: AboutPageProps) {
+export default async function AboutPage(props: AboutPageProps) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const content = await getAboutContent('umumiy', locale);
   return <AboutArticle {...content} />;
 }

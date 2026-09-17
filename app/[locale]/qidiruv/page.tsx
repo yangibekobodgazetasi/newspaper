@@ -5,17 +5,24 @@ import NewsCard from '@/components/news/NewsCard';
 import { searchNews } from '@/lib/news';
 import styles from './page.module.scss';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface PageProps {
-  params: { locale: string };
-  searchParams: { q?: string };
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ q?: string }>;
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const t = await getTranslations({ locale: params.locale, namespace: 'search' });
   return { title: t('title'), robots: { index: false, follow: true } };
 }
 
-export default async function SearchPage({ params, searchParams }: PageProps) {
+export default async function SearchPage(props: PageProps) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: 'search' });
   const query = (searchParams.q ?? '').trim();

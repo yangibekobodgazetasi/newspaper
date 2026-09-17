@@ -12,16 +12,26 @@ import Footer from '@/components/layout/Footer';
 import VisitTracker from '@/components/analytics/VisitTracker';
 import '@/styles/global.scss';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface RootLayoutProps {
   children: ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 // Barcha sahifalar uchun umumiy metadata poydevori: `metadataBase` bolalar
 // generateMetadata'laridagi nisbiy yo'llarni (canonical, OG rasm va h.k.) to'g'ri
 // to'liq URL'ga aylantiradi; `title.template` esa har bir sahifada
 // "— Yangi Bekobod" qo'shimchasini qayta yozishning oldini oladi (DRY).
-export async function generateMetadata({ params: { locale } }: RootLayoutProps): Promise<Metadata> {
+export async function generateMetadata(props: RootLayoutProps): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const t = await getTranslations({ locale });
 
   return {
@@ -50,7 +60,17 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function RootLayout({ children, params: { locale } }: RootLayoutProps) {
+export default async function RootLayout(props: RootLayoutProps) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
+  const {
+    children
+  } = props;
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }

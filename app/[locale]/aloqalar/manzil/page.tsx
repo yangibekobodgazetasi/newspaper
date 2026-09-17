@@ -5,16 +5,32 @@ import { getManzil } from '@/lib/contact';
 import { buildMetadata } from '@/lib/seo';
 import styles from './page.module.scss';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface AddressPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: AddressPageProps): Promise<Metadata> {
+export async function generateMetadata(props: AddressPageProps): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const [t, manzil] = await Promise.all([getTranslations({ locale, namespace: 'nav' }), getManzil(locale)]);
   return buildMetadata({ locale, path: '/aloqalar/manzil', title: t('contactAddress'), description: manzil.address });
 }
 
-export default async function AddressPage({ params: { locale } }: AddressPageProps) {
+export default async function AddressPage(props: AddressPageProps) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const t = await getTranslations('nav');
   const manzil = await getManzil(locale);
 
