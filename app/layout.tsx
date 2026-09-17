@@ -3,6 +3,10 @@ import type { ReactNode } from 'react';
 import { ToastProvider } from '@/components/ui/Toast';
 import '../styles/global.scss';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 export const metadata: Metadata = {
   title: 'Admin panel',
   description: '"Yangi Bekobod" gazetasi boshqaruv paneli',
