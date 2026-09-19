@@ -3,6 +3,7 @@ import cors from 'cors';
 import path from 'path';
 import routes from './routes';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler';
+import { corsOptions } from './config/cors';
 
 export function createApp() {
   const app = express();
@@ -13,7 +14,7 @@ export function createApp() {
   // (yoki `true`) qo'yilsa, IP-asoslangan rate limiting osongina chetlab o'tiladi.
   app.set('trust proxy', Number(process.env.TRUST_PROXY_HOPS) || 1);
 
-  app.use(cors());
+  app.use(cors(corsOptions));
   app.use(express.json());
 
   app.get('/health', (req, res) => res.json({ status: 'ok' }));
