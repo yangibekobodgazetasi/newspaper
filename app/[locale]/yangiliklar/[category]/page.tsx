@@ -39,6 +39,7 @@ export default async function NewsCategoryPage(props: PageProps) {
   const params = await props.params;
   const { locale, category } = params;
   const t = await getTranslations('nav');
+  const tA11y = await getTranslations('a11y');
   const meta = await getCategoryMeta(category, locale);
 
   if (!meta) {
@@ -52,6 +53,7 @@ export default async function NewsCategoryPage(props: PageProps) {
       <Breadcrumbs items={[{ label: t('news'), href: '/yangiliklar' }, { label: meta.label }]} />
       <h1 className={styles.title}>{meta.label}</h1>
       <p className={styles.lead}>{meta.description}</p>
+      <h2 className="sr-only">{tA11y('newsList')}</h2>
 
       {slug === 'media-galereya' ? (
         <MediaGalleryList />

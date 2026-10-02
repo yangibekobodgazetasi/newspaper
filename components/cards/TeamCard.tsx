@@ -21,7 +21,7 @@ export default function TeamCard({ member }: TeamCardProps) {
         )}
         <BadgeCheck className={styles.verified} size={18} />
       </div>
-      <h4 className={styles.name}>{member.name}</h4>
+      <h3 className={styles.name}>{member.name}</h3>
       <div className={styles.role}>{member.role}</div>
     </div>
   );

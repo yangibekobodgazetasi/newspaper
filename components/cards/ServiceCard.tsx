@@ -18,7 +18,7 @@ export default function ServiceCard({ icon: Icon, title, description, href, colo
       <span className={`${styles.iconWrap} ${styles[color]}`}>
         <Icon size={22} strokeWidth={2} />
       </span>
-      <h4 className={styles.title}>{title}</h4>
+      <h3 className={styles.title}>{title}</h3>
       <p className={styles.desc}>{description}</p>
     </Link>
   );

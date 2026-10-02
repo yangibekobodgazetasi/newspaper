@@ -19,7 +19,7 @@ export default function Footer() {
                 Header'dagi `/images/logo.png` o'z joyida qoladi. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/images/logo-dark.png" alt="Yangi Bekobod" className={styles.brandMark} />
-            <h5 className={styles.brandName}>Yangi Bekobod</h5>
+            <p className={styles.brandName}>Yangi Bekobod</p>
           </div>
           <p className={styles.about}>
             {t('footer.founderLabel')}: {t('footer.founder')}<br />
@@ -31,7 +31,7 @@ export default function Footer() {
 
         {columns.map((col) => (
           <div key={col.href}>
-            <h5 className={styles.heading}>{t(`nav.${col.labelKey}`)}</h5>
+            <h2 className={styles.heading}>{t(`nav.${col.labelKey}`)}</h2>
             {col.children!.map((child) => (
               <Link key={child.href} href={child.href} className={styles.link}>
                 {t(`nav.${child.labelKey}`)}

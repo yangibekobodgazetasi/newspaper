@@ -36,11 +36,14 @@ export default async function SearchPage(props: PageProps) {
       ) : !results || results.items.length === 0 ? (
         <p className={styles.empty}>{t('empty')}</p>
       ) : (
-        <div className={styles.grid}>
-          {results.items.map((item) => (
-            <NewsCard key={item.id} news={item} />
-          ))}
-        </div>
+        <>
+          <h2 className="sr-only">{t('resultsHeading')}</h2>
+          <div className={styles.grid}>
+            {results.items.map((item) => (
+              <NewsCard key={item.id} news={item} />
+            ))}
+          </div>
+        </>
       )}
     </main>
   );

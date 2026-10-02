@@ -17,7 +17,7 @@ export default function CategoryTile({ slug, label, description, count }: Catego
   return (
     <Link href={`/yangiliklar/${slug}`} className={styles.tile}>
       <div>
-        <h4 className={styles.label}>{label}</h4>
+        <h3 className={styles.label}>{label}</h3>
         <p className={styles.desc}>{description}</p>
       </div>
       <div className={styles.footer}>

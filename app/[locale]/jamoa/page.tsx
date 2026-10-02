@@ -40,6 +40,7 @@ export default async function TeamPage(props: TeamPageProps) {
       <Breadcrumbs items={[{ label: t('nav.team') }]} />
       <h1 className={styles.title}>{t('nav.team')}</h1>
       <p className={styles.lead}>{t('team.lead')}</p>
+      <h2 className="sr-only">{t('a11y.teamMembers')}</h2>
       <div className={styles.grid}>
         {team.map((member) => (
           <TeamCard key={member.id} member={member} />

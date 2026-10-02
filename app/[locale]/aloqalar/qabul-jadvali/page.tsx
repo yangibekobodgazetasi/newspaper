@@ -39,7 +39,7 @@ export default async function ReceptionSchedulePage(props: ReceptionSchedulePage
           <div key={slot.day} className={styles.row}>
             <CalendarDays size={18} className={styles.icon} strokeWidth={1.7} />
             <div>
-              <h4>{slot.day} <span className={styles.hours}>{slot.hours}</span></h4>
+              <h2>{slot.day} <span className={styles.hours}>{slot.hours}</span></h2>
               <p>{slot.person}</p>
             </div>
           </div>

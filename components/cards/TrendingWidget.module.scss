@@ -16,7 +16,7 @@
   padding-bottom: v.$space-3;
   border-bottom: 1px solid v.$line;
 
-  h5 { font-family: v.$font-serif; font-size: 15px; color: v.$title-blue; }
+  h2 { font-family: v.$font-serif; font-size: 15px; color: v.$title-blue; }
 }
 
 .headIcon {
@@ -30,14 +30,14 @@
 
   &:last-of-type { border-bottom: none; }
 
-  h4 {
+  h3 {
     font-size: 13.5px;
     line-height: 1.4;
     color: v.$ink;
     margin-top: 4px;
   }
 
-  &:hover h4 { color: v.$accent; }
+  &:hover h3 { color: v.$accent; }
 }
 
 .rubric {

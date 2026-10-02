@@ -29,6 +29,7 @@ export default async function ForumPage() {
       <h1 className={styles.title}>{t('nav.servicesForum')}</h1>
       <p className={styles.lead}>{t('services.forumLead')}</p>
       <NewTopicForm />
+      <h2 className="sr-only">{t('a11y.forumTopics')}</h2>
       <div>
         {topics.map((topic) => (
           <ForumTopicItem key={topic.id} topic={topic} />

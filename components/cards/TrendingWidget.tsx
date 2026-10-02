@@ -15,14 +15,14 @@ export default function TrendingWidget({ items }: TrendingWidgetProps) {
   return (
     <div className={styles.widget}>
       <div className={styles.head}>
-        <h5>{t('trending')}</h5>
+        <h2>{t('trending')}</h2>
         <TrendingUp size={16} className={styles.headIcon} />
       </div>
 
       {items.map((item) => (
         <Link key={item.id} href={`/yangiliklar/${item.rubricSlug}/${item.slug}`} className={styles.item}>
           <span className={styles.rubric}>{item.rubric.toUpperCase()}</span>
-          <h4>{item.title}</h4>
+          <h3>{item.title}</h3>
         </Link>
       ))}
 

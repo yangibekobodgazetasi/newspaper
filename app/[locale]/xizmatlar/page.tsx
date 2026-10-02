@@ -28,6 +28,7 @@ export default function ServicesIndexPage() {
     <div>
       <h1 className={styles.title}>{t('nav.services')}</h1>
       <p className={styles.lead}>{t('services.indexLead')}</p>
+      <h2 className="sr-only">{t('a11y.servicesList')}</h2>
       <div className={styles.tiles}>
         <LinkTile href="/xizmatlar/sorov" label={t('nav.servicesSurvey')} description={t('services.surveyDescription')} icon={BarChart3} />
         <LinkTile href="/xizmatlar/forum" label={t('nav.servicesForum')} description={t('services.forumDescription')} icon={MessageSquareText} />

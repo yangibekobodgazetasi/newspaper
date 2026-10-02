@@ -42,6 +42,19 @@ h1, h2, h3, h4, h5 {
   color: v.$title-blue;
 }
 
+/* Faqat ekran o'quvchilari va qidiruv tizimlari uchun ko'rinadigan matn (vizual dizaynga ta'sir qilmaydi). */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 ::selection {
   background: v.$accent-light;
   color: v.$river-deep;

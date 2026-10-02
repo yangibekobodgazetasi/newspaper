@@ -124,7 +124,8 @@
     "title": "Search Results",
     "resultsFor": "Results for \"{query}\"",
     "empty": "Nothing found. Try a different search term.",
-    "minLength": "Enter at least 2 characters."
+    "minLength": "Enter at least 2 characters.",
+    "resultsHeading": "Search results"
   },
   "issues": {
     "archiveTitle": "Issue Archive",
@@ -190,5 +191,13 @@
     "news": "Browse news",
     "metaTitle": "Page not found",
     "metaDescription": "The requested page could not be found. Return to the home page or browse the latest news."
+  },
+  "a11y": {
+    "newsSections": "News sections",
+    "newsList": "News list",
+    "teamMembers": "Team members",
+    "servicesList": "Interactive services list",
+    "contactSections": "Contact sections",
+    "forumTopics": "Forum topics"
   }
 }

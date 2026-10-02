@@ -16,7 +16,7 @@ export default function LinkTile({ href, label, description, icon: Icon }: LinkT
     <Link href={href} className={styles.tile}>
       {Icon && <Icon className={styles.icon} size={22} strokeWidth={1.6} />}
       <div className={styles.text}>
-        <h4>{label}</h4>
+        <h3>{label}</h3>
         <p>{description}</p>
       </div>
       <ArrowRight size={16} className={styles.arrow} />

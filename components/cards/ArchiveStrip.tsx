@@ -70,7 +70,7 @@ export default function ArchiveStrip({ issues, promo }: ArchiveStripProps) {
           />
           <div className={styles.promoOverlay} />
           <div className={styles.promoContent}>
-            <h4>{promo?.heading || t('issues.promoHeading')}</h4>
+            <h3>{promo?.heading || t('issues.promoHeading')}</h3>
           </div>
         </div>
       </div>

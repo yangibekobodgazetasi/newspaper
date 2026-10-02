@@ -28,6 +28,7 @@ export default function ContactIndexPage() {
     <div>
       <h1 className={styles.title}>{t('nav.contact')}</h1>
       <p className={styles.lead}>{t('contact.indexLead')}</p>
+      <h2 className="sr-only">{t('a11y.contactSections')}</h2>
       <div className={styles.tiles}>
         <LinkTile href="/aloqalar/manzil" label={t('nav.contactAddress')} description={t('contact.addressDescription')} icon={MapPin} />
         <LinkTile href="/aloqalar/rekvizitlar" label={t('nav.contactRequisites')} description={t('contact.requisitesDescription')} icon={FileText} />

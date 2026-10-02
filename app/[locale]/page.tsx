@@ -69,8 +69,10 @@ export default async function HomePage(props: HomePageProps) {
   const trending = kundalik.slice(0, 4);
 
   return (
-    <>
-      <main className={styles.main}>
+    <main>
+      <h1 className="sr-only">{`${SITE_NAME} — ${t('masthead.tagline')}`}</h1>
+
+      <div className={styles.main}>
         <Hero slides={heroSlides} latestIssue={issues[0]} sideStories={sideStories} />
 
         <div className={styles.newsLayout}>
@@ -123,7 +125,7 @@ export default async function HomePage(props: HomePageProps) {
             <TrendingWidget items={trending} />
           </div>
         </div>
-      </main>
+      </div>
 
       <div className={styles.archiveWrap}>
         <ArchiveStrip issues={issues.slice(0, 8)} promo={promo} />
@@ -135,14 +137,14 @@ export default async function HomePage(props: HomePageProps) {
         />
       </div>
 
-      <main className={styles.main} style={{ paddingTop: 0 }}>
+      <div className={styles.main} style={{ paddingTop: 0 }}>
         <SectionHead title={t('home.ourTeam')} seeAllHref="/jamoa" seeAllLabel={t('home.fullTeam')} />
         <div className={styles.team}>
           {team.map((member) => (
             <TeamCard key={member.id} member={member} />
           ))}
         </div>
-      </main>
-    </>
+      </div>
+    </main>
   );
 }

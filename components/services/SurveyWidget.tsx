@@ -35,7 +35,7 @@ export default function SurveyWidget({ survey }: SurveyWidgetProps) {
 
   return (
     <div className={styles.card}>
-      <h3 className={styles.question}>{survey.question}</h3>
+      <h2 className={styles.question}>{survey.question}</h2>
       <div className={styles.options}>
         {options.map((option) => {
           const percent = total === 0 ? 0 : Math.round((option.votes / total) * 100);

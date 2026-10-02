@@ -26,7 +26,7 @@ export default function IssueCard({ issue, compact = false }: IssueCardProps) {
     return (
       <Link href={`/sonlar-arxivi/${issue.id}`} className={`${styles.card} ${styles.compact}`}>
         {coverEl}
-        <h4 className={styles.number}>№{issue.number}</h4>
+        <h3 className={styles.number}>№{issue.number}</h3>
         <span className={styles.date}>{formatShort(issue.date)}</span>
       </Link>
     );
@@ -39,7 +39,7 @@ export default function IssueCard({ issue, compact = false }: IssueCardProps) {
         <span className={styles.badge}>{t('newBadge')}</span>
       </div>
       {coverEl}
-      <h4 className={styles.number}>№{issue.number} ({issue.id})</h4>
+      <h3 className={styles.number}>№{issue.number} ({issue.id})</h3>
       <p className={styles.info}>
         {formatLocalizedDate(issue.date, locale)} · {t('pagesAndSize', { pages: issue.pages, fileSize: issue.fileSize })}
       </p>

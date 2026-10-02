@@ -35,7 +35,7 @@ export default async function AntiCorruptionPage(props: AntiCorruptionPageProps)
       <div className={styles.hotlineBox}>
         <ShieldAlert size={22} className={styles.icon} />
         <div>
-          <h4>{t('hotline')}</h4>
+          <h2>{t('hotline')}</h2>
           <a href={`tel:${content.hotline}`} className={styles.phone}>
             <Phone size={14} /> {content.hotline}
           </a>

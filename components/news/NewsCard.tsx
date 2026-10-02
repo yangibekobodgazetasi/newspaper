@@ -39,7 +39,7 @@ export default function NewsCard({ news, size = 'default' }: NewsCardProps) {
       <div className={`${styles.image} ${imageClass}`} style={imageStyle}>
         <div className={styles.imageBadge}><CategoryBadge>{news.rubric}</CategoryBadge></div>
       </div>
-      <h4 className={styles.title}>{news.title}</h4>
+      <h3 className={styles.title}>{news.title}</h3>
       <p className={styles.excerpt}>{news.excerpt}</p>
       <div className={styles.meta}>
         <time dateTime={news.publishedAt}>{formatDate(news.publishedAt)}</time>

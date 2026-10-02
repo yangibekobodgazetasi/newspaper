@@ -69,7 +69,7 @@ export default function Masthead({ issueLine }: MastheadProps) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/images/logo.png" alt="Yangi Bekobod" className={styles.mark} />
           <div className={styles.brandText}>
-            <h1 className={styles.name}>YANGI BEKOBOD</h1>
+            <p className={styles.name}>YANGI BEKOBOD</p>
             <p className={styles.tagline}>{t('tagline')}</p>
           </div>
         </Link>

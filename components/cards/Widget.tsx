@@ -20,7 +20,7 @@ export default function Widget({ title, items, children, variant = 'default', se
   return (
     <div className={styles.widget}>
       <div className={styles.head}>
-        <h5 className={styles.heading}>{title}</h5>
+        <h2 className={styles.heading}>{title}</h2>
         {seeAllHref && (
           <Link href={seeAllHref} className={styles.seeAll} aria-label={t('all')}>
             <ChevronRight size={15} />

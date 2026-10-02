@@ -124,7 +124,8 @@
     "title": "Qidiruv natijalari",
     "resultsFor": "\"{query}\" bo'yicha natijalar",
     "empty": "Hech narsa topilmadi. Boshqa so'z bilan qayta urinib ko'ring.",
-    "minLength": "Kamida 2 ta belgi kiriting."
+    "minLength": "Kamida 2 ta belgi kiriting.",
+    "resultsHeading": "Qidiruv natijalari"
   },
   "issues": {
     "archiveTitle": "Sonlar arxivi",
@@ -190,5 +191,13 @@
     "news": "Yangiliklarni ko'rish",
     "metaTitle": "Sahifa topilmadi",
     "metaDescription": "So'ralgan sahifa topilmadi. Bosh sahifaga qayting yoki so'nggi yangiliklarni ko'ring."
+  },
+  "a11y": {
+    "newsSections": "Yangiliklar bo'limlari",
+    "newsList": "Yangiliklar ro'yxati",
+    "teamMembers": "Jamoa a'zolari",
+    "servicesList": "Interaktiv xizmatlar ro'yxati",
+    "contactSections": "Aloqa bo'limlari",
+    "forumTopics": "Forum mavzulari"
   }
 }

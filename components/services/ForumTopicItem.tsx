@@ -10,7 +10,7 @@ export default function ForumTopicItem({ topic }: { topic: ForumTopic }) {
   return (
     <div className={styles.item}>
       <div className={styles.head}>
-        <h4>{topic.title}</h4>
+        <h3>{topic.title}</h3>
         <span className={styles.replies}>
           <MessageCircle size={13} /> {topic.replyCount}
         </span>

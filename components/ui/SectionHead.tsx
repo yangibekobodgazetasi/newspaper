@@ -12,7 +12,7 @@ interface SectionHeadProps {
 }
 
 /**
- * Bo'lim sarlavhasi: chap tomonda h3 + qisqa urg'u chiziq, o'ngda pill ko'rinishidagi havola.
+ * Bo'lim sarlavhasi: chap tomonda h2 + qisqa urg'u chiziq, o'ngda pill ko'rinishidagi havola.
  * dark=true bo'lsa (masalan ko'k fon ustida) rang teskari bo'ladi.
  */
 export default function SectionHead({
@@ -28,7 +28,7 @@ export default function SectionHead({
     <div className={`${styles.head} ${dark ? styles.dark : ''}`}>
       <div>
         <div className={styles.titleWrap}>
-          <h3 className={styles.title}>{title}</h3>
+          <h2 className={styles.title}>{title}</h2>
           <span className={styles.dash} />
         </div>
         {subtitle && <p className={styles.subtitle}>{subtitle}</p>}

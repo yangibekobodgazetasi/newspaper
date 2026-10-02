@@ -53,6 +53,7 @@ export default async function NewsIndexPage(props: NewsIndexPageProps) {
         {t('news.indexLead')}
       </p>
 
+      <h2 className="sr-only">{t('a11y.newsSections')}</h2>
       <div className={styles.tiles}>
         {categories.map((cat) => (
           <CategoryTile

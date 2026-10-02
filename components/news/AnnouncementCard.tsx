@@ -14,7 +14,7 @@ export default function AnnouncementCard({ item }: AnnouncementCardProps) {
     <Link href={`/yangiliklar/elonlar/${item.slug}`} className={styles.item}>
       <Megaphone size={18} className={styles.icon} strokeWidth={1.7} />
       <div className={styles.body}>
-        <h4 className={styles.title}>{item.title}</h4>
+        <h3 className={styles.title}>{item.title}</h3>
         <p className={styles.excerpt}>{item.excerpt}</p>
       </div>
       <time className={styles.date} dateTime={item.publishedAt}>
