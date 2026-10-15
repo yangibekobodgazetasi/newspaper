@@ -5,6 +5,8 @@
   background: v.$paper;
   border-bottom: 1px solid v.$line;
   padding: 20px 0;
+
+  @include m.mobile { padding: v.$space-3 0 v.$space-4; }
 }
 
 .inner {
@@ -14,6 +16,8 @@
   align-items: center;
   flex-wrap: wrap;
   gap: v.$space-5;
+
+  @include m.mobile { gap: v.$space-3; }
 
   // MUHIM (RU/EN uchun): tarjimalar uzunligi tildan tilga sezilarli farq qiladi
   // (RU tagline UZ'dan ~25% uzun). `flex-wrap: wrap` bilan brend bloki kengayib,
@@ -32,6 +36,8 @@
   gap: v.$space-4;
   color: inherit;
 
+  @include m.mobile { gap: v.$space-3; }
+
   // `min-width: 0` bo'lmasa flex element o'z min-content kengligidan qisqarmaydi
   // va uzun tagline butun qatorni kengaytirib yuboradi.
   min-width: 0;
@@ -46,6 +52,8 @@
   width: 56px;
   height: auto; // logo PNG'ning haqiqiy aspect-ratio'sini saqlaydi (384x428)
   flex-shrink: 0;
+
+  @include m.mobile { width: 40px; }
 }
 
 .name {
@@ -57,7 +65,7 @@
   letter-spacing: -0.01em;
   white-space: nowrap; // gazeta nomi hech qachon ikkiga bo'linmasin
 
-  @include m.mobile { font-size: 24px; }
+  @include m.mobile { font-size: 20px; }
 }
 
 .tagline {
@@ -109,6 +117,7 @@
   @include m.mobile {
     width: 100%;
     order: 3;
+    gap: v.$space-2;
   }
 }
 
@@ -126,6 +135,13 @@
 
   @include m.mobile {
     min-width: 0;
+    padding: 8px 12px;
+  }
+
+  // Ikonka hech qachon siqilmasin (ilgari input'ning min-content kengligi uni nuqtaga
+  // aylantirib yuborardi) — o'rniga input torayib, placeholder "..." bilan qisqaradi.
+  svg {
+    flex-shrink: 0;
   }
 
   input {
@@ -135,7 +151,9 @@
     font-family: v.$font-sans;
     color: v.$ink;
     flex: 1;
+    min-width: 0;
     outline: none;
+    text-overflow: ellipsis;
 
     &::placeholder { color: v.$steel; }
   }
@@ -171,6 +189,11 @@
     padding: 6px 12px;
     border-radius: v.$radius-full;
     font-family: v.$font-sans;
+
+    @include m.mobile {
+      font-size: 12px;
+      padding: 5px 10px;
+    }
   }
 }
 

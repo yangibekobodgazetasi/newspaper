@@ -26,6 +26,8 @@ export default function Nav() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
+  const [stuck, setStuck] = useState(false);
+  const wrapRef = useRef<HTMLElement>(null);
 
   // SSR/hydratsiyada hammasi ko'rinadi deb hisoblanadi, JS o'lchagach to'g'rilanadi.
   const [visibleCount, setVisibleCount] = useState(navigation.length);
@@ -121,11 +123,26 @@ export default function Nav() {
     };
   }, [moreOpen]);
 
+  // `position: sticky; top: 0` bo'lgan nav tepaga yopishganda uning `top` qiymati 0 bo'ladi.
+  useEffect(() => {
+    const update = () => {
+      const top = wrapRef.current?.getBoundingClientRect().top ?? 1;
+      setStuck(top <= 0);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+
   const visibleItems = navigation.slice(0, visibleCount);
   const overflowItems = navigation.slice(visibleCount);
 
   return (
-    <nav className={styles.navWrap}>
+    <nav ref={wrapRef} className={`${styles.navWrap} ${stuck ? styles.stuck : ''}`}>
       <div className={styles.nav}>
         <button className={styles.burger} onClick={() => setMobileOpen(true)} aria-label={t('common.menu')}>
           <Menu size={20} />
