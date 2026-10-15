@@ -1,4 +1,4 @@
-import { apiFetch } from './api';
+import { apiFetch, ApiError } from './api';
 import type { NewsItem, MediaItem, NewsCategorySlug } from '@/types';
 import type { Paginated } from './types';
 
@@ -40,8 +40,12 @@ export async function getNewsCategoryPage(slug: NewsCategorySlug, pageSize = 24,
 export async function getNewsBySlug(category: NewsCategorySlug, slug: string, locale?: string): Promise<NewsItem | undefined> {
   try {
     return await apiFetch<NewsItem>(`/news/${category}/${slug}`, { locale });
-  } catch {
-    return undefined;
+  } catch (error) {
+    // Faqat haqiqiy 404 "topilmadi". Backend vaqtincha 500/tarmoq xatosi bersa ham
+    // notFound() chaqirilsa, 404 sahifa keshlanib qolardi (ISR) va yangilik uzoq vaqt
+    // "yo'q"day ko'rinardi — bunday xatolar qayta uloqtiriladi.
+    if (error instanceof ApiError && error.status === 404) return undefined;
+    throw error;
   }
 }
 

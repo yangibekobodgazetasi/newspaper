@@ -29,10 +29,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ revalidated: false, message: "Ruxsat yo'q" }, { status: 401 });
   }
 
-  // Next.js 16'da `revalidateTag` ikkinchi argument (cacheLife profili) talab qiladi.
-  // "max" — tegishli barcha keshni to'liq bekor qilib, keyingi so'rovda backend'dan
-  // qayta olib kelishga majburlaydi (eski, argumentsiz `revalidateTag` bilan bir xil xatti-harakat).
-  revalidateTag(API_CACHE_TAG, 'max');
+  // Next.js 16'da `revalidateTag` ikkinchi argument talab qiladi. "max" profili
+  // stale-while-revalidate: o'zgarishdan keyingi BIRINCHI tashrifchi eski kontentni
+  // ko'radi. Admin o'zgarishi darhol ko'rinishi kerak, shuning uchun `expire: 0` —
+  // keshni zudlik bilan eskirgan deb belgilaydi (eski argumentsiz chaqiruv bilan bir xil).
+  revalidateTag(API_CACHE_TAG, { expire: 0 });
 
   return NextResponse.json({ revalidated: true, tag: API_CACHE_TAG });
 }

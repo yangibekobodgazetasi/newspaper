@@ -63,6 +63,17 @@ function buildUrl(path: string, locale?: string): string {
  */
 export const API_CACHE_TAG = 'api';
 
+/** HTTP status kodini saqlaydigan xato — "topilmadi" (404) ni vaqtinchalik xatolardan ajratish uchun. */
+export class ApiError extends Error {
+  constructor(
+    public readonly status: number,
+    message: string
+  ) {
+    super(message);
+    this.name = 'ApiError';
+  }
+}
+
 export async function apiFetch<T>(path: string, options: FetchOptions = {}): Promise<T> {
   const url = buildUrl(path, options.locale);
 
@@ -75,7 +86,7 @@ export async function apiFetch<T>(path: string, options: FetchOptions = {}): Pro
   });
 
   if (!res.ok) {
-    throw new Error(`API xatosi (${res.status}): ${path}`);
+    throw new ApiError(res.status, `API xatosi (${res.status}): ${path}`);
   }
 
   return res.json() as Promise<T>;
