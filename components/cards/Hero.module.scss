@@ -27,6 +27,13 @@
   display: flex;
   align-items: flex-end;
   box-shadow: v.$shadow-lg;
+
+  // `overflow: hidden` bo'lgani uchun aspect-ratio kontentga qarab kengaymaydi: tor ekranda
+  // nishon/sana qatori tepadan kesilib qolardi. Mobil'da balandlikni kontent belgilaydi.
+  @include m.mobile {
+    aspect-ratio: auto;
+    min-height: 340px;
+  }
 }
 
 .overlay {
@@ -141,6 +148,18 @@
   white-space: nowrap;
 
   &:hover { background: v.$accent-hover; }
+
+  // Mobil'da to'ldirilgan tugma rasmning katta qismini yopib qo'yadi — faqat ko'k
+  // kontur va yozuv. To'q overlay ustida `$accent` yetarli kontrast bermaydi (~2.6:1),
+  // shuning uchun bu yerda ochroq ko'k ishlatiladi (~6.8:1).
+  @include m.mobile {
+    background: transparent;
+    color: #8FB0FF;
+    border: 1.5px solid #8FB0FF;
+    padding: 9.5px 18px;
+
+    &:hover { background: rgba(143, 176, 255, .16); }
+  }
 }
 
 // Ilgari mobil'da butunlay `display: none` bilan yashirilardi. Hero'da svayp
