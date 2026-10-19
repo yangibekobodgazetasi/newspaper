@@ -69,14 +69,55 @@
 
 .bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding: v.$space-4 v.$space-6;
-  text-align: center;
+  padding: v.$space-4 0;
   font-size: 11.5px;
   font-family: v.$font-mono;
   color: rgba(255, 255, 255, 0.45);
 }
 
-.dot {
-  margin: 0 v.$space-2;
-  color: rgba(255, 255, 255, 0.25);
+// Yuqoridagi `.grid` bilan bir xil kenglik/chetlar — chap va o'ng chetlar ustunlarga tekis tushadi.
+.bottomInner {
+  @include m.wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: v.$space-3 v.$space-4;
+
+  @include m.mobile {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.credits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-2;
+
+  @include m.mobile { justify-content: center; }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: v.$radius-full;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  transition: background-color .15s ease, border-color .15s ease;
+
+  svg { opacity: .8; flex-shrink: 0; }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: v.$white;
+  }
+}
+
+.chipLabel {
+  color: rgba(255, 255, 255, 0.55);
 }

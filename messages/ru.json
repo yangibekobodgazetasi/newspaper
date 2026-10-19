@@ -65,7 +65,8 @@
     "phone": "(998) 55 902 59 94",
     "email": "yangibekobod@umail.uz",
     "copyright": "© {year} «Yangi Bekobod» — ISSN 2091-5497",
-    "developedBy": "Разработано: Edex Academy"
+    "developedByLabel": "Разработано",
+    "authorLabel": "Автор"
   },
   "home": {
     "dailyNews": "Ежедневные новости",
