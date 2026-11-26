@@ -1,0 +1,34 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+// Ilgari bu forma `../news/NewsForm.module.scss` ni import qilardi. NewsForm
+// stillari endi yangiliklarga xos (ikki ustunli tahririy layout, metama'lumot
+// paneli) — jamoa formasiga aloqasi yo'q, shuning uchun o'z fayliga ajratildi.
+//
+// Kenglik: bu formada atigi 5 ta maydon bor va ulardan faqat bittasi (tavsif)
+// uzun matn. 1400px ga cho'zilsa "Ism Familiya" va "Lavozim" kabi qisqa
+// maydonlar 900px+ bo'lib ketardi. 960px — ikki ustunda har biri ~450px.
+.form {
+  width: 100%;
+  max-width: 960px;
+}
+
+.localeSection {
+  background: v.$paper-dim;
+  border-radius: v.$radius-sm;
+  padding: v.$space-4;
+}
+
+.error {
+  color: v.$danger;
+  font-size: 12.5px;
+  margin-bottom: v.$space-4;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: v.$space-4;
+  margin-top: v.$space-4;
+  border-top: 1px solid v.$line;
+}

@@ -1,0 +1,123 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.selected {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  padding: v.$space-3;
+  margin-bottom: v.$space-3;
+  border: 1px solid v.$line;
+  border-radius: v.$radius-sm;
+  background: v.$paper-dim;
+
+  @include m.mobile {
+    flex-wrap: wrap;
+  }
+}
+
+.fileIcon {
+  color: v.$river;
+  flex-shrink: 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.fileName {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: v.$ink;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.openLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  color: v.$accent;
+  width: fit-content;
+
+  &:hover { text-decoration: underline; }
+}
+
+.removeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border-radius: v.$radius-sm;
+  border: 1px solid v.$danger;
+  background: v.$white;
+  color: v.$danger;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  &:hover {
+    background: v.$danger;
+    color: v.$white;
+  }
+}
+
+.noneState {
+  display: flex;
+  align-items: center;
+  gap: v.$space-2;
+  font-size: 12.5px;
+  color: v.$steel;
+  margin-bottom: v.$space-3;
+}
+
+.uploadRow {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  flex-wrap: wrap;
+}
+
+// Brauzerning standart fayl inputi yashiriladi: u tanlangan faylning nomini
+// o'zicha ko'rsatadi va uslublanmaydi. O'rniga `label` tugma sifatida ishlaydi.
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.uploadLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: v.$paper-dim;
+  color: v.$river-deep;
+  padding: 7px 13px;
+  border-radius: v.$radius-sm;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px dashed v.$river-light;
+
+  &:hover { background: v.$accent-light; }
+}
+
+.limit {
+  font-size: 11.5px;
+  color: v.$steel;
+}
+
+.error {
+  color: v.$danger;
+  font-size: 11.5px;
+  margin-top: v.$space-2;
+}

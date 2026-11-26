@@ -1,0 +1,40 @@
+@use '../../styles/variables' as v;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2;
+  margin-bottom: v.$space-4;
+  // Grid katagi ichida uzun `<option>` matni yoki `<input>` ning minimal
+  // kengligi ustunni cho'zib yubormasligi uchun.
+  min-width: 0;
+}
+
+/**
+ * `FormGrid` ichida butun qatorni egallaydi — katta textarea, rasm tanlagich,
+ * til tablari kabi keng joy talab qiladigan maydonlar uchun.
+ * Grid'dan tashqarida hech qanday ta'sir ko'rsatmaydi.
+ */
+.full {
+  grid-column: 1 / -1;
+}
+
+.label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: v.$steel;
+}
+
+.req {
+  color: v.$danger;
+}
+
+.hint {
+  font-size: 11.5px;
+  color: v.$steel;
+}
+
+.error {
+  font-size: 11.5px;
+  color: v.$danger;
+}

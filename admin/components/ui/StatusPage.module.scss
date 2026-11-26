@@ -1,0 +1,75 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+// 403 va 404 uchun umumiy ko'rinish — ikkalasi bir xil tuzilishda bo'lsa,
+// foydalanuvchi farqni matndan (va kod raqamidan) aniq oladi.
+.wrap {
+  background: v.$white;
+  border: 1px solid v.$line;
+  border-radius: v.$radius-md;
+  padding: v.$space-7 v.$space-6;
+  text-align: center;
+  max-width: 460px;
+  margin: v.$space-6 auto;
+
+  @include m.below(v.$bp-mobile) {
+    padding: v.$space-6 v.$space-4;
+    margin: v.$space-4 auto;
+  }
+}
+
+.code {
+  font-family: v.$font-mono;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -2px;
+  color: v.$river-deep;
+  opacity: .22;
+
+  @include m.below(v.$bp-mobile) {
+    font-size: 44px;
+  }
+}
+
+// Ikonka raqamning ostida turadi. Salbiy margin ularni yaqinlashtiradi, LEKIN
+// ikonka raqam ustiga chiqib ketmasligi kerak — aks holda ikkalasi ham
+// o'qilmaydigan bo'lib qoladi.
+.icon {
+  display: block;
+  margin: v.$space-2 auto v.$space-3;
+  color: v.$steel;
+}
+
+.iconDanger {
+  color: v.$danger;
+}
+
+.title {
+  font-size: 17px;
+  color: v.$river-deep;
+  margin-bottom: v.$space-2;
+}
+
+.text {
+  font-size: 13px;
+  color: v.$steel;
+  line-height: 1.6;
+  margin-bottom: v.$space-5;
+}
+
+.hint {
+  display: block;
+  margin-top: v.$space-2;
+  font-family: v.$font-mono;
+  font-size: 11.5px;
+  color: v.$steel;
+  word-break: break-all;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: v.$space-3;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,47 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: v.$space-3;
+  margin-bottom: v.$space-4;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 14.5px;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  background: v.$paper-dim;
+  padding: 3px;
+  border-radius: v.$radius-sm;
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 6px 11px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: v.$steel;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover { color: v.$river-deep; }
+}
+
+.active {
+  background: v.$white;
+  color: v.$river-deep;
+  box-shadow: 0 1px 3px rgba(10,61,98,.15);
+}
+
+.chartWrap {
+  margin: 0 -8px;
+}

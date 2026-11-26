@@ -1,0 +1,47 @@
+@use '../../styles/variables' as v;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$space-2;
+  border-radius: v.$radius-sm;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: opacity .15s ease, background .15s ease;
+  white-space: nowrap;
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+.md { padding: 9px 16px; font-size: 13.5px; }
+.sm { padding: 6px 12px; font-size: 12.5px; }
+
+.primary {
+  background: v.$river;
+  color: v.$white;
+  &:hover:not(:disabled) { background: v.$river-deep; }
+}
+
+.outline {
+  background: v.$white;
+  border-color: v.$line;
+  color: v.$ink;
+  &:hover:not(:disabled) { border-color: v.$river; }
+}
+
+.ghost {
+  background: transparent;
+  color: v.$steel;
+  &:hover:not(:disabled) { background: v.$paper-dim; color: v.$river-deep; }
+}
+
+.danger {
+  background: v.$white;
+  border-color: v.$danger;
+  color: v.$danger;
+  &:hover:not(:disabled) { background: v.$danger; color: v.$white; }
+}

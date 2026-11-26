@@ -1,0 +1,138 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: v.$space-4;
+  margin-bottom: v.$space-6;
+
+  @include m.below(v.$bp-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.chartSection {
+  margin-bottom: v.$space-6;
+}
+
+.statCard {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+}
+
+.statIcon {
+  color: v.$river;
+  flex-shrink: 0;
+}
+
+.statValue {
+  font-size: 22px;
+  font-weight: 800;
+  color: v.$river-deep;
+  line-height: 1.1;
+}
+
+.statLabel {
+  font-size: 11.5px;
+  color: v.$steel;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: v.$space-5;
+  margin-bottom: v.$space-5;
+
+  @include m.below(v.$bp-tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sectionTitle {
+  font-size: 14px;
+  margin-bottom: v.$space-4;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: v.$space-3;
+  padding: v.$space-3 0;
+  border-top: 1px solid v.$line;
+  font-size: 13px;
+
+  &:first-of-type { border-top: none; }
+}
+
+.rowMeta {
+  font-family: v.$font-mono;
+  font-size: 11px;
+  color: v.$steel;
+  white-space: nowrap;
+}
+
+.rowActions {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  flex-shrink: 0;
+}
+
+.messageDetail {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-4;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  gap: v.$space-4;
+  font-size: 13.5px;
+  padding-bottom: v.$space-3;
+  border-bottom: 1px solid v.$line;
+
+  span:last-child {
+    text-align: right;
+    word-break: break-word;
+  }
+}
+
+.detailBlock {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2;
+}
+
+.detailLabel {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: v.$steel;
+  flex-shrink: 0;
+}
+
+.detailMessage {
+  font-size: 13.5px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: v.$paper-dim;
+  border-radius: v.$radius-sm;
+  padding: v.$space-4;
+}
+
+.empty {
+  font-size: 13px;
+  color: v.$steel;
+}
+
+.error {
+  color: v.$danger;
+  padding: v.$space-6;
+}
+
+.surveyCard {
+  max-width: 500px;
+}

@@ -1,0 +1,80 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 61, 98, 0.35);
+  display: flex;
+  // `flex-start` + dialogdagi `margin: auto 0`: joy yetsa modal markazda turadi,
+  // yetmasa yuqoridan boshlanadi (markazlashtirilgan uzun modalning ustki qismi
+  // ekrandan chiqib ketmasin — u yerda sarlavha va yopish tugmasi bor).
+  align-items: flex-start;
+  justify-content: center;
+  padding: v.$space-4;
+  overflow-y: auto; // ehtiyot chorasi: juda past ekranlarda overlay ham skroll qiladi
+  z-index: 100;
+}
+
+.dialog {
+  background: v.$white;
+  border-radius: v.$radius-md;
+  max-width: 640px;
+  width: 100%;
+  margin: auto 0;
+  max-height: calc(100vh - #{v.$space-8});
+  // Mobil brauzerlarda manzil paneli hisobga olinsin (`100vh` u yerda ekrandan kattaroq).
+  max-height: calc(100dvh - #{v.$space-8});
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 48px rgba(10, 61, 98, .25);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: v.$space-5 v.$space-6;
+  border-bottom: 1px solid v.$line;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 16px;
+}
+
+.close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: v.$radius-sm;
+  color: v.$steel;
+  background: transparent;
+
+  &:hover:not(:disabled) {
+    background: v.$paper-dim;
+    color: v.$ink;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.body {
+  padding: v.$space-6;
+  overflow-y: auto;
+}
+
+@include m.mobile {
+  .dialog {
+    max-width: 100%;
+  }
+
+  .header, .body {
+    padding: v.$space-4;
+  }
+}

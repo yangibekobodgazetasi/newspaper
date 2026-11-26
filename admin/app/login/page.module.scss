@@ -1,0 +1,43 @@
+@use '../../styles/variables' as v;
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, v.$river-deep 0%, v.$river 60%, v.$accent 130%);
+  padding: v.$space-5;
+}
+
+.card {
+  background: v.$white;
+  border-radius: v.$radius-md;
+  padding: v.$space-8 v.$space-7;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 24px 60px rgba(10, 61, 98, .3);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: v.$space-4;
+  margin-bottom: v.$space-7;
+
+  h1 { font-size: 18px; color: v.$river-deep; }
+  p { font-size: 12px; color: v.$steel; margin-top: 2px; }
+}
+
+// Haqiqiy logotip (avvalgi "YB" dumaloq belgisi o'rniga)
+.mark {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.error {
+  color: v.$danger;
+  font-size: 12.5px;
+  margin-bottom: v.$space-4;
+}

@@ -1,0 +1,84 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.stack {
+  position: fixed;
+  top: v.$space-4;
+  right: v.$space-4;
+  // Modal va ConfirmDialog `z-index: 100` da — toast ULAR USTIDA ko'rinishi shart,
+  // aks holda modal ichidagi amal natijasi (masalan xato) ko'rinmay qolardi.
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2;
+  width: 340px;
+  max-width: calc(100vw - #{v.$space-4} * 2);
+  pointer-events: none; // orqadagi interfeysga xalaqit bermasin
+
+  @include m.below(v.$bp-mobile) {
+    // Mobil: ekran tepasida to'liq kenglikda — barmoq bilan yopish qulay bo'lsin
+    top: v.$space-3;
+    left: v.$space-3;
+    right: v.$space-3;
+    width: auto;
+    max-width: none;
+  }
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: v.$space-3;
+  padding: v.$space-3 v.$space-4;
+  border-radius: v.$radius-md;
+  background: v.$white;
+  border: 1px solid v.$line;
+  border-left: 3px solid v.$steel;
+  box-shadow: 0 6px 20px rgba(10, 61, 98, .14);
+  animation: slide-in .18s ease-out;
+}
+
+.success { border-left-color: v.$success; }
+.error   { border-left-color: v.$danger; }
+.info    { border-left-color: v.$river; }
+
+.success .icon { color: v.$success; }
+.error   .icon { color: v.$danger; }
+.info    .icon { color: v.$river; }
+
+.icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.message {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: v.$ink;
+  overflow-wrap: anywhere; // uzun server xabari qutidan chiqib ketmasin
+}
+
+.close {
+  flex-shrink: 0;
+  background: none;
+  border: 0;
+  padding: 2px;
+  cursor: pointer;
+  color: v.$steel;
+  border-radius: v.$radius-sm;
+
+  &:hover { color: v.$ink; background: v.$paper-dim; }
+}
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+// Harakatni kamaytirish sozlamasi yoqilgan bo'lsa animatsiyasiz
+@media (prefers-reduced-motion: reduce) {
+  .toast { animation: none; }
+}

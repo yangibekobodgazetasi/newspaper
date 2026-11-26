@@ -1,0 +1,16 @@
+@use '../../styles/variables' as v;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: v.$radius-full;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: v.$font-mono;
+}
+
+.default { background: v.$paper-dim; color: v.$river-deep; }
+.success { background: rgba(30, 158, 107, .12); color: v.$success; }
+.warning { background: rgba(214, 140, 31, .12); color: v.$warning; }
+.danger { background: rgba(192, 57, 43, .12); color: v.$danger; }

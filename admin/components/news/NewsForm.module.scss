@@ -1,0 +1,112 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+// Ilgari bu yerda `max-width: 640px` turardi — layout `.content` ni qanchalik
+// kengaytirsak ham forma o'sha 640px da qolib ketardi. Cheklov olib tashlandi:
+// endi kenglikni faqat `.content` (1400px) belgilaydi.
+.form {
+  width: 100%;
+}
+
+/**
+ * IKKI USTUNLI TAHRIRIY LAYOUT
+ * ----------------------------
+ * Chapda — matn (til tablari, sarlavha, mazmun, to'liq matn).
+ * O'ngda — nashr metama'lumotlari (toifa, muallif, sana, muqova).
+ *
+ * Nima uchun hamma narsani bitta ustunga cho'zib yubormadik: 1300px kenglikda
+ * bitta ustunli formada `<select>` va sana maydoni ham 1300px bo'lib ketardi —
+ * yorliq bilan qiymat orasi ko'z bilan kuzatib bo'lmaydigan darajada uzoqlashadi.
+ * Ikki ustunda matn maydoni ~800px (o'qish uchun qulay), qisqa maydonlar esa
+ * ~440px da ixcham qoladi.
+ */
+.columns {
+  display: grid;
+  // `minmax(0, ...)` — uzun `<option>` matni ustunni kengaytirib yubormasligi uchun.
+  // O'ng ustun 280px dan tor bo'lmaydi: undan kichrayganda selektlar o'qilmay qoladi.
+  grid-template-columns: minmax(0, 1.8fr) minmax(280px, 1fr);
+  gap: v.$space-6;
+  align-items: start;
+
+  @include m.below(v.$bp-desktop) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.side {
+  border-left: 1px solid v.$line;
+  padding-left: v.$space-6;
+
+  // Bitta ustunga tushganda chap chegara mantiqsiz bo'ladi — u yuqoridagi
+  // ajratuvchi chiziqqa aylanadi.
+  //
+  // Shu bilan birga panelning o'zi ikki ustunli gridga aylanadi: aks holda
+  // toifa/muallif/sana kabi qisqa maydonlar butun kenglikka (~850px) cho'zilib
+  // ketardi. Keng ekranda esa panel allaqachon tor (~380-450px), shuning uchun
+  // u yerda grid KERAK EMAS — ikkiga bo'linsa maydonlar juda torayib qolardi.
+  @include m.below(v.$bp-desktop) {
+    border-left: none;
+    border-top: 1px solid v.$line;
+    padding-left: 0;
+    padding-top: v.$space-5;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: v.$space-5;
+    align-content: start;
+
+    @include m.mobile {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+}
+
+// "Muallif" maydoni "Boshqa" rejimida — erkin matn + orqaga qaytish tugmasi.
+.otherAuthor {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2;
+}
+
+.otherAuthorBack {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: v.$river;
+  cursor: pointer;
+
+  &:hover { color: v.$accent; text-decoration: underline; }
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: v.$space-2;
+  font-size: 13px;
+  padding-top: 9px;
+
+  input { accent-color: v.$accent; }
+}
+
+.localeSection {
+  background: v.$paper-dim;
+  border-radius: v.$radius-sm;
+  padding: v.$space-4;
+}
+
+.error {
+  color: v.$danger;
+  font-size: 12.5px;
+  margin-bottom: v.$space-4;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: v.$space-4;
+  margin-top: v.$space-4;
+  border-top: 1px solid v.$line;
+}

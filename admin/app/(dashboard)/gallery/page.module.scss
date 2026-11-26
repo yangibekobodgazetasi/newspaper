@@ -1,0 +1,81 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.formCard {
+  max-width: 420px;
+}
+
+.title {
+  font-size: 15px;
+  margin-bottom: v.$space-4;
+}
+
+.error {
+  color: v.$danger;
+  font-size: 12.5px;
+  margin-bottom: v.$space-3;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: v.$space-4;
+}
+
+.card {
+  @include m.card;
+  overflow: hidden;
+}
+
+.thumb, .placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  background: v.$paper-dim;
+}
+
+.meta {
+  padding: v.$space-3;
+}
+
+.caption {
+  font-size: 12.5px;
+  margin-bottom: v.$space-2;
+  line-height: 1.4;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: v.$font-mono;
+  font-size: 10.5px;
+  color: v.$steel;
+}
+
+.rowActions {
+  display: flex;
+  align-items: center;
+  gap: v.$space-2;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  color: v.$steel;
+  cursor: pointer;
+  display: inline-flex;
+
+  &:hover { color: v.$river; }
+}
+
+.deleteBtn {
+  background: none;
+  border: none;
+  color: v.$steel;
+  cursor: pointer;
+  display: inline-flex;
+
+  &:hover { color: v.$danger; }
+}

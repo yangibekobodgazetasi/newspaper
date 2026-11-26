@@ -1,0 +1,28 @@
+# Bog'liqliklar
+/node_modules
+
+# Next.js build natijasi
+/.next/
+/out/
+
+# Production build
+/build
+
+# Sirlar
+.env
+.env*.local
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+
+# OS / muharrir
+.DS_Store
+*.pem
+
+# Loglar
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

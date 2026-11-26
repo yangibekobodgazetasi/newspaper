@@ -1,0 +1,25 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+// Bu formada uzun matn maydoni umuman yo'q — hammasi qisqa (raqam, sana, hajm).
+// Shuning uchun uni layout kengligiga (1400px) to'liq cho'zish noto'g'ri bo'lardi:
+// sana maydoni 1300px bo'lib, yorliq bilan qiymat orasi ko'z bilan bog'lab
+// bo'lmaydigan darajada uzoqlashadi. 1120px + uch ustun = har biri ~350px.
+.form {
+  width: 100%;
+  max-width: 1120px;
+}
+
+.error {
+  color: v.$danger;
+  font-size: 12.5px;
+  margin-bottom: v.$space-4;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: v.$space-4;
+  margin-top: v.$space-4;
+  border-top: 1px solid v.$line;
+}

@@ -1,0 +1,11 @@
+@use '../../styles/variables' as v;
+
+.description {
+  margin-top: v.$space-2;
+  padding: v.$space-3;
+  background: v.$paper-dim;
+  border-radius: v.$radius-sm;
+  font-size: 12px;
+  line-height: 1.55;
+  color: v.$steel;
+}

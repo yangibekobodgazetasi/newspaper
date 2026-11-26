@@ -1,0 +1,7 @@
+@use '../../../styles/variables' as v;
+
+.error {
+  color: v.$danger;
+  font-size: 12.5px;
+  margin-bottom: v.$space-3;
+}

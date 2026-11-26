@@ -1,0 +1,45 @@
+@use '../../../styles/variables' as v;
+
+.formCard {
+  max-width: 480px;
+}
+
+.title {
+  font-size: 15px;
+  margin-bottom: v.$space-4;
+}
+
+.error {
+  color: v.$danger;
+  font-size: 12.5px;
+  margin-bottom: v.$space-3;
+}
+
+.surveyCard {
+  max-width: 480px;
+  margin-bottom: v.$space-3;
+}
+
+.surveyHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: v.$space-3;
+  font-size: 13.5px;
+}
+
+.optionRow {
+  display: flex;
+  justify-content: space-between;
+  padding: v.$space-2 0;
+  border-top: 1px solid v.$line;
+  font-size: 13px;
+
+  &:first-of-type { border-top: none; }
+}
+
+.votes {
+  font-family: v.$font-mono;
+  font-size: 11.5px;
+  color: v.$steel;
+}

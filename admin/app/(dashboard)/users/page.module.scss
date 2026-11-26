@@ -1,0 +1,28 @@
+@use '../../../styles/variables' as v;
+
+.formCard {
+  max-width: 420px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 15px;
+  margin-bottom: v.$space-4;
+}
+
+.error {
+  color: v.$danger;
+  font-size: 12.5px;
+  margin-bottom: v.$space-3;
+}
+
+.toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}

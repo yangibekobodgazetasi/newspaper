@@ -1,0 +1,25 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.main {
+  margin-left: v.$sidebar-width;
+  min-height: 100vh;
+  transition: margin-left .18s ease;
+
+  @include m.below(v.$bp-tablet) {
+    margin-left: 0;
+  }
+}
+
+.mainCollapsed {
+  margin-left: 68px;
+
+  @include m.below(v.$bp-tablet) {
+    margin-left: 0;
+  }
+}
+
+.content {
+  padding: v.$space-6;
+  max-width: 1400px;
+}

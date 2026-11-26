@@ -1,0 +1,50 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+/**
+ * FORMALARNING YAGONA USTUN TIZIMI
+ * --------------------------------
+ * Ilgari har bir forma o'zining `.row { grid-template-columns: 1fr 1fr }`
+ * klassini nusxalab yurardi (NewsForm va IssueForm da aynan bir xil kod) va
+ * qaysi maydon butun qatorni egallashi JSX tuzilishiga bog'liq edi.
+ *
+ * Endi joylashuv maydonning O'ZIDA e'lon qilinadi: `<FormField span="full">`.
+ * Shu tufayli katta matn maydonlari (textarea, rasm tanlagich, til tablari)
+ * qaysi formada bo'lishidan qat'i nazar butun qatorni egallaydi.
+ *
+ * Qatorlar orasidagi masofa ataylab bu yerda EMAS — u `FormField` ning
+ * `margin-bottom` idan keladi. Aks holda ikkalasi qo'shilib ketardi.
+ */
+.grid {
+  display: grid;
+  // `minmax(0, 1fr)` — `1fr` emas: aks holda uzun matnli `<select>` yoki
+  // `<input>` o'z minimal kengligi bilan ustunni kengaytirib, gridni
+  // konteynerdan chiqarib yuboradi.
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: v.$space-5;
+
+  @include m.below(v.$bp-tablet) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/**
+ * Uch ustunli variant — faqat qisqa maydonlardan iborat formalar uchun
+ * (masalan son arxivi: ID, tartib raqami, sana, sahifalar soni, hajm).
+ * Ikki ustunda bunday maydonlar 500px+ ga cho'zilib, yorliq bilan qiymat orasi
+ * keraksiz uzoqlashardi.
+ */
+.cols3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  @include m.below(v.$bp-desktop) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include m.below(v.$bp-tablet) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+// Butun qatorni egallash `FormField.module.scss` dagi `.full` orqali beriladi —
+// joylashuvni maydonning o'zi e'lon qiladi, o'rab turgan grid emas.

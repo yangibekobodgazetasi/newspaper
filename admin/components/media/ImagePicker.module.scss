@@ -1,0 +1,174 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+// --- Tanlangan rasm ko'rinishi (preview) va uni olib tashlash ---
+.preview {
+  display: flex;
+  align-items: flex-start;
+  gap: v.$space-4;
+  padding: v.$space-3;
+  margin-bottom: v.$space-3;
+  border: 1px solid v.$line;
+  border-radius: v.$radius-sm;
+  background: v.$paper-dim;
+}
+
+.previewBox {
+  flex: 0 0 132px;
+  width: 132px;
+  aspect-ratio: 4 / 3; // spec bo'lsa inline style bilan almashtiriladi
+  border-radius: v.$radius-sm;
+  overflow: hidden;
+  background: v.$white;
+  border: 1px solid v.$line;
+}
+
+.previewImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.previewSide {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: v.$space-2;
+}
+
+.previewLabel {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: v.$steel;
+}
+
+.removeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border-radius: v.$radius-sm;
+  border: 1px solid v.$danger;
+  background: v.$white;
+  color: v.$danger;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background: v.$danger;
+    color: v.$white;
+  }
+}
+
+.noneState {
+  display: flex;
+  align-items: center;
+  gap: v.$space-2;
+  font-size: 12.5px;
+  color: v.$steel;
+  margin-bottom: v.$space-3;
+}
+
+.uploadRow {
+  margin-bottom: v.$space-3;
+}
+
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.uploadLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: v.$paper-dim;
+  color: v.$river-deep;
+  padding: 7px 13px;
+  border-radius: v.$radius-sm;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px dashed v.$river-light;
+
+  &:hover { background: v.$accent-light; }
+}
+
+.error {
+  color: v.$danger;
+  font-size: 11.5px;
+  margin-bottom: v.$space-3;
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  gap: v.$space-2;
+  font-size: 12.5px;
+  color: v.$steel;
+}
+
+.gallery {
+  margin-top: v.$space-2;
+}
+
+.galleryLabel {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: v.$steel;
+  margin-bottom: v.$space-2;
+}
+
+// Ro'yxat o'z ichida skroll qiladi — taxminan ikki qator ko'rinadi.
+// Shu tufayli ImagePicker modal ichida ishlatilganda ham modal balandligi
+// yuklangan rasmlar soniga bog'liq bo'lmay qoladi.
+.gridScroll {
+  max-height: 208px;
+  overflow-y: auto;
+  padding: v.$space-2;
+  border: 1px solid v.$line;
+  border-radius: v.$radius-sm;
+  background: v.$paper-dim;
+
+  @include m.mobile { max-height: 168px; }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: v.$space-2;
+
+  // Mobilda thumbnail'lar kichikroq — aks holda bitta qator ekranning yarmini egallaydi
+  @include m.mobile {
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  }
+}
+
+.thumbBtn {
+  padding: 0;
+  border: 2px solid v.$line;
+  border-radius: v.$radius-sm;
+  overflow: hidden;
+  cursor: pointer;
+  background: none;
+  line-height: 0;
+
+  &:hover { border-color: v.$river-light; }
+}
+
+.thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.active {
+  border-color: v.$accent !important;
+  box-shadow: 0 0 0 2px rgba(14,165,216,.2);
+}
