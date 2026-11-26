@@ -1,0 +1,156 @@
+{
+  "survey": {
+    "id": "s1",
+    "question": "Gazetaning qaysi rukni sizga eng ko'p yoqadi?",
+    "options": [
+      {
+        "id": "o1",
+        "label": "Shodiyona",
+        "votes": 128
+      },
+      {
+        "id": "o2",
+        "label": "Jarayon",
+        "votes": 46
+      },
+      {
+        "id": "o3",
+        "label": "Qonun ustuvorligi",
+        "votes": 39
+      },
+      {
+        "id": "o4",
+        "label": "Hikoya",
+        "votes": 84
+      },
+      {
+        "id": "o5",
+        "label": "Mutolaadosh",
+        "votes": 57
+      }
+    ],
+    "isActive": true
+  },
+  "forumTopics": [
+    {
+      "id": "f1",
+      "title": "Yangi yo'l qurilishi haqida fikringiz",
+      "body": "Zafar shaharchasidagi yangi yo'l qurilishi tugallanmoqda. Qo'shni ko'chalar uchun ham shunday reja bormi?",
+      "authorName": "Anvar Qodirov",
+      "createdAt": "2026-06-20T10:00:00Z",
+      "replyCount": 5
+    },
+    {
+      "id": "f2",
+      "title": "Bekobodda yangi bolalar bog'chasi qachon ochiladi?",
+      "body": "Ziyoli mahallasida qurilayotgan bog'cha haqida rasmiy ma'lumot bo'lsa, bo'lishib o'ting.",
+      "authorName": "Nodira Yusupova",
+      "createdAt": "2026-06-18T14:20:00Z",
+      "replyCount": 3
+    },
+    {
+      "id": "f3",
+      "title": "Gazetaning elektron arxividan qanday foydalanish mumkin?",
+      "body": "Eski sonlarni PDF holida topib bo'lmayapti, arxiv qachon to'liq joylanadi?",
+      "authorName": "Sardor Aliyev",
+      "createdAt": "2026-06-12T09:15:00Z",
+      "replyCount": 2
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Gazetaga qanday obuna bo'lish mumkin?",
+      "answer": "Elektron obuna sayt orqali bepul amalga oshiriladi, bosma nusxa uchun \"O'zbekiston pochtasi\" bo'limiga murojaat qiling.",
+      "askedBy": "Nodira",
+      "status": "answered",
+      "createdAt": "2026-06-10"
+    },
+    {
+      "id": "q2",
+      "question": "Maqola yozib, gazetada chop ettirish mumkinmi?",
+      "answer": "Ha, materiallaringizni yangibekobod@umail.uz manziliga yuborishingiz mumkin, tahririyat ko'rib chiqib javob beradi.",
+      "askedBy": "Jasur",
+      "status": "answered",
+      "createdAt": "2026-06-05"
+    },
+    {
+      "id": "q3",
+      "question": "Sayt orqali murojaat qanchа muddatda ko'rib chiqiladi?",
+      "answer": null,
+      "askedBy": "Malika",
+      "status": "pending",
+      "createdAt": "2026-06-28"
+    }
+  ],
+  "faq": [
+    {
+      "order": 0,
+      "translations": {
+        "uz": {
+          "question": "Gazetaga qanday obuna bo'lish mumkin?",
+          "answer": "Sayt orqali elektron obuna bepul, bosma nusxa uchun pochta bo'limlariga murojaat qiling."
+        },
+        "ru": {
+          "question": "Как оформить подписку на газету?",
+          "answer": "Электронная подписка через сайт бесплатна, а для печатного экземпляра обратитесь в отделения почты."
+        },
+        "en": {
+          "question": "How can I subscribe to the newspaper?",
+          "answer": "The electronic subscription through the website is free; for a printed copy, please contact your local post office."
+        }
+      }
+    },
+    {
+      "order": 1,
+      "translations": {
+        "uz": {
+          "question": "Gazeta qay tartibda chop etiladi?",
+          "answer": "\"Yangi Bekobod\" har haftada — payshanba kunlari 8 sahifada chop etiladi."
+        },
+        "ru": {
+          "question": "В каком режиме выходит газета?",
+          "answer": "«Yangi Bekobod» выходит еженедельно — по четвергам, на 8 страницах."
+        },
+        "en": {
+          "question": "How often is the newspaper published?",
+          "answer": "\"Yangi Bekobod\" is published weekly — every Thursday, in 8 pages."
+        }
+      }
+    },
+    {
+      "order": 2,
+      "translations": {
+        "uz": {
+          "question": "Eski sonlarni qayerdan topsam bo'ladi?",
+          "answer": "\"Sonlar arxivi\" bo'limida 1931-yildan buyon chop etilgan barcha sonlar PDF formatida joylashtirilgan."
+        },
+        "ru": {
+          "question": "Где найти старые номера?",
+          "answer": "В разделе «Архив номеров» размещены все номера, изданные с 1931 года, в формате PDF."
+        },
+        "en": {
+          "question": "Where can I find back issues?",
+          "answer": "The \"Issue Archive\" section holds every issue published since 1931 in PDF format."
+        }
+      }
+    },
+    {
+      "order": 3,
+      "translations": {
+        "uz": {
+          "question": "Murojaat yoki taklifni qanday yuborsam bo'ladi?",
+          "answer": "Sayt yuqorisidagi \"Murojaat qoldirish\" tugmasi orqali yoki yangibekobod@umail.uz manziliga yozishingiz mumkin."
+        },
+        "ru": {
+          "question": "Как отправить обращение или предложение?",
+          "answer": "Через кнопку «Оставить обращение» в верхней части сайта или письмом на адрес yangibekobod@umail.uz."
+        },
+        "en": {
+          "question": "How do I send a request or suggestion?",
+          "answer": "Use the \"Leave a request\" button at the top of the site, or write to yangibekobod@umail.uz."
+        }
+      }
+    }
+  ]
+}
