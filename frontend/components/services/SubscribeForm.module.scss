@@ -1,0 +1,65 @@
+@use '../../styles/variables' as v;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-3;
+  max-width: 400px;
+  background: v.$white;
+  border: 1px solid v.$line;
+  border-radius: v.$radius-md;
+  padding: v.$space-6;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-1;
+}
+
+.input {
+  font-family: v.$font-sans;
+  font-size: 13.5px;
+  padding: v.$space-3 v.$space-4;
+  border: 1px solid v.$line;
+  border-radius: v.$radius-sm;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+    border-color: v.$accent;
+  }
+}
+
+.invalid {
+  border-color: v.$danger;
+
+  &:focus {
+    border-color: v.$danger;
+  }
+}
+
+.fieldError {
+  color: v.$danger;
+  font-size: 12.5px;
+}
+
+.success {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  max-width: 400px;
+  background: v.$paper-dim;
+  border-radius: v.$radius-md;
+  padding: v.$space-5;
+  color: v.$success;
+  font-size: 13.5px;
+  line-height: 1.5;
+
+  svg { flex-shrink: 0; }
+}
+
+.error {
+  color: v.$danger;
+  font-size: 12.5px;
+}

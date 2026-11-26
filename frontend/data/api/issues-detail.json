@@ -1,0 +1,14 @@
+{
+  "method": "GET",
+  "path": "/api/issues/:id",
+  "description": "Bitta sonning to'liq ma'lumoti (masalan PDF ochish sahifasi uchun)",
+  "response": {
+    "id": "8043",
+    "number": 25,
+    "date": "2026-06-30",
+    "pages": 8,
+    "fileSize": "4.2 MB",
+    "pdfUrl": "/issues/8043.pdf",
+    "coverImage": "/issues/8043-cover.jpg"
+  }
+}

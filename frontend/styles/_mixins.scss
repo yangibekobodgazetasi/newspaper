@@ -1,0 +1,68 @@
+@use 'variables' as v;
+
+// --- Responsive breakpoint mixin ---
+@mixin mobile {
+  @media (max-width: v.$bp-tablet - 1px) { @content; }
+}
+@mixin tablet {
+  @media (min-width: v.$bp-tablet) and (max-width: v.$bp-desktop - 1px) { @content; }
+}
+@mixin desktop {
+  @media (min-width: v.$bp-desktop) { @content; }
+}
+@mixin below($size) {
+  @media (max-width: $size - 1px) { @content; }
+}
+
+// --- Container wrap ---
+@mixin wrap($max: v.$bp-wide) {
+  max-width: $max;
+  margin: 0 auto;
+  padding: 0 v.$space-6;
+
+  @include mobile {
+    padding: 0 v.$space-4;
+  }
+}
+
+// --- Eyebrow label (rubrika, sana kabi kichik yorliqlar) ---
+@mixin eyebrow {
+  font-family: v.$font-mono;
+  font-size: 10.5px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: v.$accent;
+  font-weight: 600;
+}
+
+// --- Karta bazasi (news-card, service-card va h.k. uchun umumiy) ---
+@mixin card-base {
+  background: v.$white;
+  border: 1px solid v.$line;
+  border-radius: v.$radius-md;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+// --- Bo'lim sarlavhasi qatori ---
+@mixin section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: v.$space-3;
+  border-bottom: 2px solid v.$river-deep;
+}
+
+// --- Matn qirqish (line-clamp) ---
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// --- Grid yordamchisi ---
+@mixin grid($cols, $gap: v.$space-6) {
+  display: grid;
+  grid-template-columns: repeat($cols, 1fr);
+  gap: $gap;
+}

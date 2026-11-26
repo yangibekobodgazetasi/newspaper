@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "path": "/api/services/forum",
+  "description": "Yangi forum mavzusi ochish",
+  "request": {
+    "title": "Mavzu sarlavhasi",
+    "body": "Matn...",
+    "authorName": "Anvar",
+    "authorEmail": "anvar@example.com"
+  },
+  "response": {
+    "id": "f35",
+    "success": true
+  }
+}

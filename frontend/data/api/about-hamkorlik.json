@@ -1,0 +1,22 @@
+{
+  "method": "GET",
+  "path": "/api/about/hamkorlik",
+  "description": "\"Yangi Bekobod\" DM bilan hamkor tashkilotlar haqida ma'lumot",
+  "response": {
+    "partners": [
+      {
+        "id": "p1",
+        "name": "Bekobod tumani hokimligi",
+        "logo": "/partners/hokimlik.png",
+        "url": null
+      },
+      {
+        "id": "p2",
+        "name": "O'zbekiston Matbuot va axborot agentligi",
+        "logo": "/partners/uzmatbuot.png",
+        "url": null
+      }
+    ],
+    "updatedAt": "2026-06-01T00:00:00Z"
+  }
+}

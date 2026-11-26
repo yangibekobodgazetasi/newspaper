@@ -1,0 +1,14 @@
+{
+  "method": "GET",
+  "path": "/api/contact/qabul-jadvali",
+  "description": "Rahbariyatning fuqarolarni qabul qilish tartibi va jadvali",
+  "response": {
+    "schedule": [
+      {
+        "day": "Dushanba",
+        "hours": "09:00–12:00",
+        "person": "Bosh muharrir Sarvinoz Sheraliyeva"
+      }
+    ]
+  }
+}

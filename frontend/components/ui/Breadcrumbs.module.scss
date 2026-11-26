@@ -1,0 +1,32 @@
+@use '../../styles/variables' as v;
+
+.trail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: v.$space-1;
+  font-family: v.$font-mono;
+  font-size: 11.5px;
+  color: v.$steel;
+  padding: v.$space-5 0 v.$space-3;
+}
+
+.crumb {
+  display: flex;
+  align-items: center;
+  gap: v.$space-1;
+
+  a:hover {
+    color: v.$river;
+  }
+}
+
+.current {
+  color: v.$ink;
+  font-weight: 600;
+}
+
+.sep {
+  color: v.$line;
+  margin: 0 2px;
+}

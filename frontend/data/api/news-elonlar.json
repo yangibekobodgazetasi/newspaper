@@ -1,0 +1,19 @@
+{
+  "method": "GET",
+  "path": "/api/news/elonlar?page=1&pageSize=12",
+  "description": "Muassasaga kelib tushgan e'lonlar",
+  "response": {
+    "items": [
+      {
+        "id": "a1",
+        "title": "Olmaliq DTI Bekobod filialiga 400 nafar talaba qabul qilinadi",
+        "meta": "sentabrdan",
+        "publishedAt": "2026-06-15",
+        "body": "<p>...</p>"
+      }
+    ],
+    "page": 1,
+    "pageSize": 12,
+    "total": 6
+  }
+}

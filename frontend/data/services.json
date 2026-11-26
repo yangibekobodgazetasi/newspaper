@@ -1,0 +1,88 @@
+{
+  "survey": {
+    "id": "s1",
+    "question": "Gazetaning qaysi rukni sizga eng ko'p yoqadi?",
+    "options": [
+      { "id": "o1", "label": "Shodiyona", "votes": 128 },
+      { "id": "o2", "label": "Jarayon", "votes": 46 },
+      { "id": "o3", "label": "Qonun ustuvorligi", "votes": 39 },
+      { "id": "o4", "label": "Hikoya", "votes": 84 },
+      { "id": "o5", "label": "Mutolaadosh", "votes": 57 }
+    ],
+    "isActive": true
+  },
+  "forumTopics": [
+    {
+      "id": "f1",
+      "title": "Yangi yo'l qurilishi haqida fikringiz",
+      "body": "Zafar shaharchasidagi yangi yo'l qurilishi tugallanmoqda. Qo'shni ko'chalar uchun ham shunday reja bormi?",
+      "authorName": "Anvar Qodirov",
+      "createdAt": "2026-06-20T10:00:00Z",
+      "replyCount": 5
+    },
+    {
+      "id": "f2",
+      "title": "Bekobodda yangi bolalar bog'chasi qachon ochiladi?",
+      "body": "Ziyoli mahallasida qurilayotgan bog'cha haqida rasmiy ma'lumot bo'lsa, bo'lishib o'ting.",
+      "authorName": "Nodira Yusupova",
+      "createdAt": "2026-06-18T14:20:00Z",
+      "replyCount": 3
+    },
+    {
+      "id": "f3",
+      "title": "Gazetaning elektron arxividan qanday foydalanish mumkin?",
+      "body": "Eski sonlarni PDF holida topib bo'lmayapti, arxiv qachon to'liq joylanadi?",
+      "authorName": "Sardor Aliyev",
+      "createdAt": "2026-06-12T09:15:00Z",
+      "replyCount": 2
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Gazetaga qanday obuna bo'lish mumkin?",
+      "answer": "Elektron obuna sayt orqali bepul amalga oshiriladi, bosma nusxa uchun \"O'zbekiston pochtasi\" bo'limiga murojaat qiling.",
+      "askedBy": "Nodira",
+      "status": "answered",
+      "createdAt": "2026-06-10"
+    },
+    {
+      "id": "q2",
+      "question": "Maqola yozib, gazetada chop ettirish mumkinmi?",
+      "answer": "Ha, materiallaringizni yangibekobod@umail.uz manziliga yuborishingiz mumkin, tahririyat ko'rib chiqib javob beradi.",
+      "askedBy": "Jasur",
+      "status": "answered",
+      "createdAt": "2026-06-05"
+    },
+    {
+      "id": "q3",
+      "question": "Sayt orqali murojaat qanchа muddatda ko'rib chiqiladi?",
+      "answer": null,
+      "askedBy": "Malika",
+      "status": "pending",
+      "createdAt": "2026-06-28"
+    }
+  ],
+  "faq": [
+    {
+      "id": "faq1",
+      "question": "Gazetaga qanday obuna bo'lish mumkin?",
+      "answer": "Sayt orqali elektron obuna bepul, bosma nusxa uchun pochta bo'limlariga murojaat qiling."
+    },
+    {
+      "id": "faq2",
+      "question": "Gazeta qay tartibda chop etiladi?",
+      "answer": "\"Yangi Bekobod\" har haftada — payshanba kunlari 8 sahifada chop etiladi."
+    },
+    {
+      "id": "faq3",
+      "question": "Eski sonlarni qayerdan topsam bo'ladi?",
+      "answer": "\"Sonlar arxivi\" bo'limida 1931-yildan buyon chop etilgan barcha sonlar PDF formatida joylashtirilgan."
+    },
+    {
+      "id": "faq4",
+      "question": "Murojaat yoki taklifni qanday yuborsam bo'ladi?",
+      "answer": "Sayt yuqorisidagi \"Murojaat qoldirish\" tugmasi orqali yoki yangibekobod@umail.uz manziliga yozishingiz mumkin."
+    }
+  ]
+}

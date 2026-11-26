@@ -1,0 +1,79 @@
+@use '../../../../../styles/variables' as v;
+@use '../../../../../styles/mixins' as m;
+
+.main {
+  @include m.wrap;
+  padding-bottom: v.$space-12;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: v.$space-10;
+  align-items: start;
+
+  @include m.below(v.$bp-desktop) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.article {
+  min-width: 0;
+}
+
+.title {
+  font-size: 30px;
+  margin: v.$space-3 0 v.$space-3;
+  line-height: 1.22;
+
+  @include m.mobile {
+    font-size: 24px;
+  }
+}
+
+.meta {
+  display: flex;
+  gap: v.$space-4;
+  font-family: v.$font-mono;
+  font-size: 12px;
+  color: v.$steel;
+  margin-bottom: v.$space-6;
+  padding-bottom: v.$space-6;
+  border-bottom: 1px solid v.$line;
+}
+
+.cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: v.$radius-md;
+  margin-bottom: v.$space-6;
+  background-size: cover;
+  background-position: center;
+}
+
+.gradient-1 { background: linear-gradient(150deg, v.$river-light, v.$river); }
+.gradient-2 { background: linear-gradient(150deg, v.$accent-light, v.$accent); }
+.gradient-3 { background: linear-gradient(150deg, #9FC6DE, v.$steel); }
+.gradient-4 { background: linear-gradient(150deg, v.$river, v.$river-deep); }
+
+.body {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: v.$ink;
+  max-width: 68ch;
+
+  p {
+    margin-bottom: v.$space-5;
+  }
+}
+
+.sidebar {
+  position: sticky;
+  top: calc(v.$space-6 + 60px);
+}
+
+.relatedList {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-6;
+}

@@ -1,0 +1,265 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.hero {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: v.$space-8;
+  padding-bottom: v.$space-8;
+
+  @include m.below(v.$bp-desktop) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.main {
+  width: 100%;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: v.$radius-lg;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  box-shadow: v.$shadow-lg;
+
+  // `overflow: hidden` bo'lgani uchun aspect-ratio kontentga qarab kengaymaydi: tor ekranda
+  // nishon/sana qatori tepadan kesilib qolardi. Mobil'da balandlikni kontent belgilaydi.
+  @include m.mobile {
+    aspect-ratio: auto;
+    min-height: 340px;
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(11,42,74,.88) 0%, rgba(11,42,74,.35) 55%, rgba(11,42,74,.05) 100%);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: v.$space-8;
+
+  @include m.mobile { padding: v.$space-5; }
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  margin-bottom: v.$space-4;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: rgba(255,255,255,.75);
+  font-size: 12px;
+  font-family: v.$font-mono;
+}
+
+.title {
+  font-size: 32px;
+  color: v.$white;
+  margin-bottom: v.$space-3;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+
+  @include m.mobile { font-size: 22px; }
+}
+
+.excerpt {
+  font-size: 15px;
+  color: rgba(255,255,255,.85);
+  line-height: 1.6;
+  margin-bottom: v.$space-5;
+  max-width: 54ch;
+
+  @include m.mobile { display: none; }
+}
+
+.footerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: v.$space-4;
+  flex-wrap: wrap;
+}
+
+// "Batafsil" tugmasi va karusel boshqaruvi bitta qatorda yonma-yon turadi.
+// Ilgari boshqaruv `position: absolute` bilan o'ng pastga qo'yilgan edi va
+// tugmaning ustiga chiqib ketardi — endi ikkalasi ham oqimda, ustma-ust
+// tushishi mumkin emas.
+.footerActions {
+  display: flex;
+  align-items: center;
+  gap: v.$space-5;
+
+  // Mobil'da joy tor — bo'shliqni siqib, "Batafsil" va karusel boshqaruvi
+  // baribir bitta qatorga sig'ishga harakat qiladi (kerak bo'lsa `.footerRow`
+  // ning `flex-wrap` xususiyati ularni keyingi qatorga tushiradi).
+  @include m.mobile {
+    gap: v.$space-3;
+  }
+}
+
+.authorRow {
+  display: flex;
+  align-items: center;
+  gap: v.$space-2;
+  color: rgba(255,255,255,.9);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: v.$accent;
+  color: v.$white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.readMore {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: v.$accent;
+  color: v.$white;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 11px 20px;
+  border-radius: v.$radius-full;
+  white-space: nowrap;
+
+  &:hover { background: v.$accent-hover; }
+
+  // Mobil'da to'ldirilgan tugma rasmning katta qismini yopib qo'yadi — faqat ko'k
+  // kontur va yozuv. To'q overlay ustida `$accent` yetarli kontrast bermaydi (~2.6:1),
+  // shuning uchun bu yerda ochroq ko'k ishlatiladi (~6.8:1).
+  @include m.mobile {
+    background: transparent;
+    color: #8FB0FF;
+    border: 1.5px solid #8FB0FF;
+    padding: 9.5px 18px;
+
+    &:hover { background: rgba(143, 176, 255, .16); }
+  }
+}
+
+// Ilgari mobil'da butunlay `display: none` bilan yashirilardi. Hero'da svayp
+// imo-ishorasi yo'q — nuqta/strelkalarni bosish slaydni qo'lda almashtirishning
+// YAGONA yo'li, shuning uchun ularni yashirish mobil foydalanuvchini 7 soniyalik
+// avtoplaygacha kutishga majburlardi. Endi ko'rinib turadi, faqat torroq joyga
+// moslab kichraytiriladi.
+.carouselControls {
+  display: flex;
+  align-items: center;
+  gap: v.$space-4;
+  flex-shrink: 0;
+
+  @include m.mobile {
+    gap: v.$space-2;
+  }
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.4);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dotActive {
+  background: v.$white;
+  width: 20px;
+  border-radius: v.$radius-full;
+  transition: width .2s ease;
+}
+
+.arrows {
+  display: flex;
+  gap: v.$space-2;
+
+  // Nuqtalarning o'zi ham bosilganda o'sha slaydga o'tkazadi (bkl. Hero.tsx),
+  // shuning uchun mobil'da alohida strelka tugmalari shart emas — joy tejaladi.
+  @include m.mobile { display: none; }
+
+  button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.15);
+    border: none;
+    color: v.$white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    flex-shrink: 0;
+
+    &:hover { background: rgba(255,255,255,.3); }
+  }
+}
+
+// --- Gradient fallback (rasm hali yuklanmagan bo'lsa) ---
+.gradient-1 { background-image: linear-gradient(150deg, v.$river-light, v.$river-deep); }
+.gradient-2 { background-image: linear-gradient(150deg, v.$accent-light, v.$accent); }
+.gradient-3 { background-image: linear-gradient(150deg, #9FC6DE, v.$steel); }
+.gradient-4 { background-image: linear-gradient(150deg, v.$river, v.$river-deep); }
+
+// --- Yon tomondagi kichik xabarlar ---
+.sideStory {
+  display: flex;
+  gap: v.$space-3;
+  padding: v.$space-4 0;
+  border-bottom: 1px solid v.$line;
+
+  &:first-of-type { padding-top: v.$space-5; }
+
+  h4 {
+    font-size: 14px;
+    line-height: 1.32;
+    margin-top: 5px;
+    color: v.$ink;
+  }
+
+  &:hover h4 { color: v.$accent; }
+}
+
+.sideThumb {
+  width: 70px;
+  height: 54px;
+  flex-shrink: 0;
+  border-radius: v.$radius-sm;
+  background-size: cover;
+  background-position: center;
+}
+
+.sideBadge {
+  padding: 3px 9px;
+  font-size: 10px;
+}

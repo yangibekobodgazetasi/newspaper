@@ -1,0 +1,266 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.navWrap {
+  background: v.$paper;
+  padding: v.$space-4 0;
+  position: sticky;
+  top: 0;
+  z-index: v.$z-nav;
+
+  @include m.mobile {
+    padding: v.$space-2 v.$space-3;
+    transition: background-color .2s ease;
+  }
+}
+
+// Skroll qilinganda (Nav.tsx `stuck` klassini qo'shadi) mobil'da qutini o'rab turgan oq
+// fon olib tashlanadi, o'rniga to'q "pill" ning o'zi biroz xiralashtirilgan (blur) bo'ladi.
+.stuck {
+  @include m.mobile {
+    background: transparent;
+
+    .nav {
+      background: rgba(11, 42, 74, .88);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+  }
+}
+
+.nav {
+  @include m.wrap;
+  background: v.$river-deep;
+  border-radius: v.$radius-lg;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px;
+  box-shadow: v.$shadow-md;
+  transition: background-color .2s ease;
+
+  // `wrap` mixini mobil'da yon padding beradi va fon shu padding'gacha bo'yaladi —
+  // natijada pill ekran chetigacha cho'zilib, burchaklari oq fonda qirqilib qolardi.
+  // Mobil'da pill chetlardan masofa bilan "suzib" turadi (masofa `.navWrap` padding'idan).
+  @include m.mobile {
+    max-width: none;
+    margin: 0;
+    padding: 6px;
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  // `flex:1 + min-width:0` — bu qatorni haqiqiy mavjud joyga moslab toraytiradi
+  // (aks holda o'z ichidagi bandlarning yig'indi kengligidan kichraymasdi).
+  // JS shu konteynerning `offsetWidth`ini "byudjet" sifatida ishlatadi
+  // (bkl. Nav.tsx `recalc`) — nechta band sig'ishini shundan hisoblaydi.
+  //
+  // MUHIM: `overflow: hidden` ATAYLAB qo'yilmagan — u pastga ochiladigan
+  // `.dropdown` menyularni (ham oddiy bandlarnikini, ham "..." menyusinikini)
+  // kesib tashlar edi, chunki kesish geometriyasi elementning `position`
+  // xususiyatidan qat'i nazar ishlaydi. JS `useLayoutEffect` orqali bo'yash
+  // (paint)dan OLDIN to'g'ri sondagi bandni hisoblaganidan, oqib chiqish real
+  // amalda ko'rinmaydi (faqat JS ishlamasa/hidratsiyadan oldingi bir lahzada).
+  flex: 1 1 auto;
+  min-width: 0;
+
+  // 768px (tablet) dan pastda "priority+" naqsh o'rniga to'liq ekran hamburger
+  // menyusiga o'tiladi — tor ekranda "..." menyusi ham noqulay bo'lib qolardi.
+  @include m.mobile {
+    display: none;
+  }
+}
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  color: v.$white;
+  padding: v.$space-3;
+
+  @include m.mobile {
+    display: flex;
+  }
+}
+
+// Ko'rinmas o'lchov qatori — bandlarning "tabiiy" kengligini olish uchun (bkl.
+// Nav.tsx). `.links`dan farqli, bu yerda `flex`/`overflow` cheklovi yo'q,
+// shuning uchun har bir bola o'z haqiqiy (siqilmagan) kengligini beradi.
+.measure {
+  position: fixed;
+  top: -9999px;
+  left: -9999px;
+  display: flex;
+  gap: 2px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.item {
+  position: relative;
+
+  > button, > a {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 18px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    background: none;
+    border: none;
+    border-radius: v.$radius-full;
+    // Bandning o'zi ichida matn ikki qatorga bo'linmasligi uchun — ham vizual
+    // jihatdan, ham Nav.tsx'dagi kenglik o'lchovi to'g'ri ishlashi uchun kerak
+    // (sig'maslik holati endi "..." menyusiga tushirish bilan hal qilinadi).
+    white-space: nowrap;
+  }
+
+  &:hover > button,
+  &:hover > a {
+    color: v.$white;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  &.current > a {
+    color: v.$white;
+    background: v.$accent;
+  }
+
+  &:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.caret {
+  opacity: .7;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background: v.$white;
+  min-width: 260px;
+  box-shadow: v.$shadow-lg;
+  border-radius: v.$radius-md;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: all .15s ease;
+  z-index: v.$z-dropdown;
+
+  a {
+    display: block;
+    padding: 11px 18px;
+    font-size: 13px;
+    color: v.$ink;
+    border-bottom: 1px solid v.$line;
+
+    &:last-child { border-bottom: none; }
+    &:hover { background: v.$paper-dim; color: v.$accent; }
+  }
+
+  // "..." (ko'proq) tugmasi bosish orqali ochiladi (hover emas) — shu holat
+  // uchun JS klass bilan boshqariladi, `.item:hover` ga bog'liq emas.
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+// "..." (ko'proq) tugmasi — matn o'rniga faqat ikonka, shuning uchun yon
+// padding tor. Qatorning eng o'ng bandi bo'lgani uchun ochiladigan ro'yxat
+// o'ng chetga tekislanadi, aks holda ekrandan chiqib ketishi mumkin edi.
+.more {
+  > button {
+    padding: 11px 14px;
+  }
+
+  .dropdown {
+    left: auto;
+    right: 0;
+  }
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: v.$accent;
+  color: v.$white;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 11px 18px;
+  border-radius: v.$radius-full;
+  white-space: nowrap;
+
+  &:hover { background: v.$accent-hover; }
+
+  @include m.mobile {
+    padding: 9px 14px;
+  }
+}
+
+// --- Mobil to'liq ekran menyu ---
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  background: v.$white;
+  z-index: v.$z-modal;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.mobileHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: v.$space-5 v.$space-6;
+  border-bottom: 1px solid v.$line;
+  font-weight: 700;
+  color: v.$river-deep;
+
+  button { background: none; border: none; color: v.$river-deep; }
+}
+
+.mobileLinks {
+  padding: v.$space-4 v.$space-6;
+}
+
+.mobileGroup {
+  border-bottom: 1px solid v.$line;
+  padding: v.$space-3 0;
+
+  > a {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: v.$river-deep;
+    padding: v.$space-2 0;
+  }
+}
+
+.mobileCurrent {
+  color: v.$accent !important;
+}
+
+.mobileChildren {
+  display: flex;
+  flex-direction: column;
+  padding-left: v.$space-4;
+
+  a {
+    font-size: 14px;
+    color: v.$steel;
+    padding: v.$space-2 0;
+  }
+}

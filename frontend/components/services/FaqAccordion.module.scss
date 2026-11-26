@@ -1,0 +1,42 @@
+@use '../../styles/variables' as v;
+
+.list {
+  max-width: 720px;
+}
+
+.item {
+  border-bottom: 1px solid v.$line;
+}
+
+.question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: v.$space-3;
+  background: none;
+  border: none;
+  padding: v.$space-5 0;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  color: v.$ink;
+}
+
+.chevron {
+  color: v.$river;
+  flex-shrink: 0;
+  transition: transform .18s ease;
+}
+
+.open {
+  transform: rotate(180deg);
+}
+
+.answer {
+  padding: 0 0 v.$space-5;
+  font-size: 13.5px;
+  color: v.$steel;
+  line-height: 1.6;
+  max-width: 65ch;
+}

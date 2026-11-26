@@ -1,0 +1,76 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.main {
+  @include m.wrap;
+  // Header va Footer o'z joyida qoladi — bu blok ular orasini to'ldiradi.
+  // `min-height` sahifa juda "yassi" ko'rinmasligi uchun.
+  min-height: 52vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: v.$space-12 0;
+
+  @include m.mobile {
+    min-height: 44vh;
+    padding: v.$space-10 0;
+  }
+}
+
+.code {
+  font-family: v.$font-serif;
+  font-size: 140px;
+  line-height: .9;
+  font-weight: 700;
+  letter-spacing: -4px;
+  color: v.$title-blue;
+  // Raqam dekorativ — matndan ko'ra fon elementi sifatida ishlaydi.
+  opacity: .16;
+  // Salbiy margin sarlavhani raqamga biroz "kirishtiradi" (qatlamli ko'rinish).
+  // Kichik ekranlarda raqam ham kichrayadi, shuning uchun kirishish MUTANOSIB
+  // ravishda kamayadi — aks holda sarlavha raqam ustiga chiqib, o'qilmay qolardi.
+  margin-bottom: calc(-1 * #{v.$space-6});
+
+  @include m.below(v.$bp-tablet) {
+    font-size: 104px;
+    margin-bottom: calc(-1 * #{v.$space-4});
+  }
+  @include m.mobile {
+    font-size: 82px;
+    letter-spacing: -2px;
+    margin-bottom: calc(-1 * #{v.$space-2});
+  }
+}
+
+.title {
+  font-family: v.$font-serif;
+  font-size: 32px;
+  color: v.$title-blue;
+  margin-bottom: v.$space-3;
+
+  @include m.mobile {
+    font-size: 23px;
+  }
+}
+
+.text {
+  font-size: 15px;
+  line-height: 1.65;
+  color: v.$steel;
+  max-width: 46ch;
+  margin: 0 auto v.$space-8;
+
+  @include m.mobile {
+    font-size: 14px;
+    margin-bottom: v.$space-6;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: v.$space-3;
+  justify-content: center;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,36 @@
+@use '../../../../styles/variables' as v;
+
+.title {
+  font-size: 28px;
+  margin-bottom: v.$space-5;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+
+  tr {
+    border-bottom: 1px solid v.$line;
+  }
+
+  th, td {
+    text-align: left;
+    padding: v.$space-4 0;
+  }
+
+  th {
+    width: 200px;
+    color: v.$steel;
+    font-weight: 500;
+    font-family: v.$font-mono;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+
+  td {
+    color: v.$ink;
+    font-weight: 500;
+  }
+}

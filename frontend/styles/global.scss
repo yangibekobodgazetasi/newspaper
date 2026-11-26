@@ -1,0 +1,71 @@
+@use 'variables' as v;
+@use 'fonts';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: v.$paper-dim;
+  color: v.$ink;
+  font-family: v.$font-sans;
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: v.$font-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  color: v.$title-blue;
+}
+
+/* Faqat ekran o'quvchilari va qidiruv tizimlari uchun ko'rinadigan matn (vizual dizaynga ta'sir qilmaydi). */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+::selection {
+  background: v.$accent-light;
+  color: v.$river-deep;
+}
+
+// Scrollbar (arxiv strip kabi gorizontal scroll uchun)
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: v.$river-light;
+  border-radius: v.$radius-full;
+}

@@ -1,0 +1,12 @@
+{
+  "method": "POST",
+  "path": "/api/analytics/visit",
+  "description": "Sahifa tashrifini qayd qilish (auth talab qilinmaydi, VisitTracker komponenti har sahifa ochilganda chaqiradi)",
+  "request": {
+    "path": "/yangiliklar/kundalik-yangiliklar",
+    "visitorHash": "k3j2h4-lx9f2a"
+  },
+  "response": {
+    "success": true
+  }
+}

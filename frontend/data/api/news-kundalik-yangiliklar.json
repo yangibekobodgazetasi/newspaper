@@ -1,0 +1,25 @@
+{
+  "method": "GET",
+  "path": "/api/news/kundalik-yangiliklar?page=1&pageSize=12",
+  "description": "Tumanning kundalik yangiliklari",
+  "response": {
+    "items": [
+      {
+        "id": "n-2026-06-30-01",
+        "slug": "yoshlar-bilan-uchrashuv",
+        "rubric": "Rahbariyat",
+        "rubricSlug": "kundalik-yangiliklar",
+        "title": "Prezidentimiz yoshlar bilan uchrashib, yangi tashabbuslarni ilgari surdi",
+        "excerpt": "...",
+        "body": "<p>To'liq matn...</p>",
+        "author": "Sarvinoz SHERALIYEVA",
+        "publishedAt": "2026-06-30",
+        "cover": "gradient-1",
+        "featured": true
+      }
+    ],
+    "page": 1,
+    "pageSize": 12,
+    "total": 48
+  }
+}

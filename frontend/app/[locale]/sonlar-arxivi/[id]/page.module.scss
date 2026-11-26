@@ -1,0 +1,71 @@
+@use '../../../../styles/variables' as v;
+@use '../../../../styles/mixins' as m;
+
+.main {
+  @include m.wrap;
+  padding-bottom: v.$space-12;
+}
+
+.layout {
+  display: flex;
+  gap: v.$space-8;
+  margin-bottom: v.$space-10;
+  padding-bottom: v.$space-8;
+  border-bottom: 1px solid v.$line;
+
+  @include m.mobile {
+    flex-direction: column;
+  }
+}
+
+.cover {
+  width: 160px;
+  aspect-ratio: 3 / 4;
+  flex-shrink: 0;
+  border-radius: v.$radius-md;
+  // Standart holat — gradient. Admin muqova yuklasa, `background-image` inline
+  // style bilan ustiga qo'yiladi (`design/desktop/gazeta.png` kabi 3:4 vertikal).
+  background: linear-gradient(160deg, v.$river-light, v.$river-deep);
+  background-size: cover;
+  background-position: center;
+  border: 1px solid v.$line;
+}
+
+.title {
+  font-size: 26px;
+  margin-bottom: v.$space-2;
+}
+
+.date {
+  font-family: v.$font-mono;
+  font-size: 13px;
+  color: v.$steel;
+  margin-bottom: v.$space-2;
+}
+
+.specs {
+  font-size: 13px;
+  color: v.$steel;
+  margin-bottom: v.$space-5;
+}
+
+.grid {
+  @include m.grid(3, v.$space-6);
+
+  @include m.below(v.$bp-desktop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include m.mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+// PDF fayli serverda yo'q bo'lganda tugma o'rnida ko'rsatiladi
+.unavailable {
+  display: inline-block;
+  font-size: 13px;
+  color: v.$steel;
+  padding: 10px 16px;
+  border: 1px dashed v.$line;
+  border-radius: v.$radius-sm;
+}

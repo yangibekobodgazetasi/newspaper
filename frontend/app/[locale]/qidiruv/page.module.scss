@@ -1,0 +1,36 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.main {
+  @include m.wrap;
+  padding-bottom: v.$space-12;
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: v.$space-2;
+}
+
+.lead {
+  color: v.$steel;
+  font-size: 14.5px;
+  max-width: 62ch;
+  margin-bottom: v.$space-8;
+}
+
+.grid {
+  @include m.grid(3, v.$space-6);
+
+  @include m.below(v.$bp-desktop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include m.mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.empty {
+  color: v.$steel;
+  font-size: 14px;
+  padding: v.$space-8 0;
+}

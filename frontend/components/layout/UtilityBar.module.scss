@@ -1,0 +1,63 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.bar {
+  background: v.$river-deep;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 12px;
+}
+
+.inner {
+  @include m.wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // `padding` shorthand emas — `m.wrap` allaqachon yon tomon padding'ini
+  // (responsivligi bilan) beradi; shorthand ishlatilsa uni 0 ga tushirib
+  // qo'yardi va kontent (ayniqsa mobil'da, faqat ijtimoiy tarmoq ikonkalari
+  // qolganda) ekran chetiga yopishib qolardi.
+  padding-top: 9px;
+  padding-bottom: 9px;
+  gap: v.$space-5;
+}
+
+.institution {
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+
+  @include m.mobile { display: none; }
+}
+
+.quote {
+  flex: 1;
+  text-align: center;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: v.$font-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @include m.below(v.$bp-desktop) { display: none; }
+}
+
+.social {
+  display: flex;
+  gap: v.$space-2;
+  flex-shrink: 0;
+
+  a {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: v.$radius-full;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    transition: background .15s ease;
+
+    &:hover { background: v.$accent; color: v.$white; }
+  }
+}

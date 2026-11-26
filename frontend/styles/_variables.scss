@@ -1,0 +1,77 @@
+// ============================================
+// YANGI BEKOBOD — DIZAYN TOKENLARI
+// Skrinshotlardagi zamonaviy ko'rinishga moslashtirilgan (v2)
+// Barcha ranglarni shu yerdan almashtirish mumkin
+// ============================================
+
+// --- Asosiy palitra ---
+$river-deep:   #0B2A4A; // masthead/utility bar/footer fon (to'q navy)
+$river:        #143C68; // ikkinchi darajali to'q ko'k
+$river-light:  #4F7CDB; // och ko'k — gradient/aksent
+$accent:       #3457F4; // asosiy CTA rangi — tugmalar, faol nav, havolalar (vivid indigo-blue)
+$accent-hover: #2643D6;
+$accent-light: #E8ECFF; // juda och binafsha-ko'k — chip/badge fon
+
+$paper:        #FFFFFF; // asosiy fon — oq
+$paper-dim:    #F5F7FB; // juda och kulrang-ko'k fon — sahifa background, vidjetlar
+
+$steel:        #6B7280; // ikkinchi darajali matn (sana va h.k.) — Figma
+$ink:          #111827; // asosiy matn rangi — Figma
+$title-blue:   #1E3A8A; // sarlavha/title matn rangi (h1-h5, brend nomi) — Figma "ko'k titlelar"
+$white:        #FFFFFF;
+
+$line:         rgba(15, 23, 42, 0.08); // ajratuvchi chiziqlar (avvalgidan yumshoqroq)
+
+// --- Rukn/toifa badge ranglari (skrinshotdagi rang-barang chiplar) ---
+$badge-orange-bg: #FFEDE0; $badge-orange-fg: #C2410C;
+$badge-blue-bg:   #E0EEFF; $badge-blue-fg:   #1D4ED8;
+$badge-purple-bg: #F1E8FF; $badge-purple-fg: #7C3AED;
+$badge-green-bg:  #E1F7EA; $badge-green-fg:  #15803D;
+$badge-pink-bg:   #FFE4EC; $badge-pink-fg:   #BE185D;
+$badge-teal-bg:   #DFF7F3; $badge-teal-fg:   #0F766E;
+
+// --- Status ranglari (formalar, bildirishnomalar uchun) ---
+$success: #16A34A;
+$warning: #D97706;
+$danger:  #DC2626;
+
+// --- Tipografika ---
+// Katta title/headline — Figma. 'Tinos' — Liberation Serif fayllarida yo'q
+// kirill harflar uchun to'ldiruvchi (bkl. _fonts.scss), bir xil Croscore dizayni.
+$font-serif: 'Liberation Serif', 'Tinos', 'Times New Roman', serif;
+$font-sans:  'Inter', sans-serif;    // barcha sarlavha va matn
+$font-mono:  'JetBrains Mono', monospace; // metama'lumot (sana, eyebrow)
+
+// --- Breakpointlar ---
+$bp-mobile:  480px;
+$bp-tablet:  768px;
+$bp-desktop: 1024px;
+$bp-wide:    1300px;
+
+// --- Spacing shkala (4px asosida) ---
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 20px;
+$space-6: 24px;
+$space-8: 32px;
+$space-10: 40px;
+$space-12: 48px;
+
+// --- Radius (skrinshotdagidek yumaloqroq) ---
+$radius-sm: 8px;
+$radius-md: 14px;
+$radius-lg: 20px;
+$radius-full: 999px;
+
+// --- Soyalar ---
+// $shadow-sm — Figma'dagi aniq qiymat (ikki qatlamli yumshoq karta soyasi)
+$shadow-sm: 0px 1.66px 3.32px -1.66px rgba(0, 0, 0, 0.10), 0px 3.32px 4.99px -0.83px rgba(0, 0, 0, 0.10);
+$shadow-md: 0 12px 32px rgba(15, 23, 42, 0.10);
+$shadow-lg: 0 24px 56px rgba(15, 23, 42, 0.16);
+
+// --- Z-index shkala ---
+$z-nav: 60;
+$z-dropdown: 70;
+$z-modal: 100;

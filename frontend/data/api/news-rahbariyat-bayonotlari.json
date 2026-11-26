@@ -1,0 +1,11 @@
+{
+  "method": "GET",
+  "path": "/api/news/rahbariyat-bayonotlari?page=1&pageSize=12",
+  "description": "Boshqaruv organi vakillarining chiqishlari va bayonotlari",
+  "response": {
+    "items": [],
+    "page": 1,
+    "pageSize": 12,
+    "total": 0
+  }
+}

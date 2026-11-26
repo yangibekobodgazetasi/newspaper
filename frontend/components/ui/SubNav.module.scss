@@ -1,0 +1,45 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-1;
+  position: sticky;
+  top: calc(v.$space-6 + 60px);
+
+  a {
+    padding: v.$space-3 v.$space-4;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: v.$steel;
+    border-radius: v.$radius-md;
+    border-left: 2.5px solid transparent;
+
+    &:hover {
+      background: v.$paper-dim;
+      color: v.$river-deep;
+    }
+  }
+
+  .active {
+    background: v.$paper-dim;
+    color: v.$river-deep;
+    font-weight: 700;
+    border-left-color: v.$accent;
+  }
+
+  @include m.below(v.$bp-desktop) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: static;
+
+    a {
+      border-left: none;
+      border-bottom: 2.5px solid transparent;
+    }
+    .active {
+      border-bottom-color: v.$accent;
+    }
+  }
+}

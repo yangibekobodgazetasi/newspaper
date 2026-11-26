@@ -1,0 +1,11 @@
+{
+  "method": "POST",
+  "path": "/api/services/sorov/:id/vote",
+  "description": "So'rovga ovoz berish",
+  "request": {
+    "optionId": "o1"
+  },
+  "response": {
+    "success": true
+  }
+}

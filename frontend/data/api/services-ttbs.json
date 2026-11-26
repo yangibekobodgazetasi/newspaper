@@ -1,0 +1,14 @@
+{
+  "method": "GET",
+  "path": "/api/services/ttbs",
+  "description": "Tez-tez beriladigan savollar",
+  "response": {
+    "items": [
+      {
+        "id": "faq1",
+        "question": "Gazetaga qanday obuna bo'lish mumkin?",
+        "answer": "Sayt orqali yoki pochta bo'limlari orqali."
+      }
+    ]
+  }
+}

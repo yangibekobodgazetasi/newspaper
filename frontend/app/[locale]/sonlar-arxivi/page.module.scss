@@ -1,0 +1,40 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.main {
+  @include m.wrap;
+  padding-bottom: v.$space-12;
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: v.$space-2;
+}
+
+.lead {
+  color: v.$steel;
+  font-size: 14.5px;
+  max-width: 62ch;
+  margin-bottom: v.$space-8;
+}
+
+.yearBlock {
+  margin-bottom: v.$space-10;
+}
+
+.year {
+  font-family: v.$font-mono;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: v.$river;
+  margin-bottom: v.$space-5;
+  padding-bottom: v.$space-2;
+  border-bottom: 1px solid v.$line;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: v.$space-5;
+}

@@ -1,0 +1,18 @@
+@use '../../styles/variables' as v;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: v.$radius-full;
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.badge0 { background: v.$badge-orange-bg; color: v.$badge-orange-fg; }
+.badge1 { background: v.$badge-blue-bg; color: v.$badge-blue-fg; }
+.badge2 { background: v.$badge-purple-bg; color: v.$badge-purple-fg; }
+.badge3 { background: v.$badge-green-bg; color: v.$badge-green-fg; }
+.badge4 { background: v.$badge-pink-bg; color: v.$badge-pink-fg; }
+.badge5 { background: v.$badge-teal-bg; color: v.$badge-teal-fg; }

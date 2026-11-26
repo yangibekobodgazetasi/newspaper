@@ -1,0 +1,22 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.main {
+  @include m.wrap;
+  padding-bottom: v.$space-12;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: v.$space-10;
+
+  @include m.below(v.$bp-desktop) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.content {
+  min-width: 0;
+  max-width: 72ch;
+}
