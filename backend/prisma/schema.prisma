@@ -1,0 +1,367 @@
+// ============================================
+// YANGI BEKOBOD — Prisma sxemasi
+// frontend/data/api/*.json kontraktlariga mos
+// ============================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// KO'P TILLILIK (i18n)
+// ============================================
+
+// Tarjima manbai — kelajakda AI orqali avtomatik tarjima qo'shish uchun
+// (origin=AI bo'lsa, admin panelda "🤖 AI tarjima, ko'rib chiqilmagan" belgisi ko'rsatiladi)
+enum TranslationOrigin {
+  HUMAN
+  AI
+}
+
+// Sayt qo'llab-quvvatlaydigan tillar — admin panelda boshqariladi,
+// yangi til qo'shish uchun kod deploy qilish shart emas.
+// Yozuvlar hech qachon o'chirilmaydi — faqat isActive orqali yashiriladi.
+model Language {
+  code      String  @id // "uz" | "ru" | "en" — admin panelda yangi til qo'shish imkoniyati yo'q, faqat mavjudlarini faollashtirish/o'chirish
+  name      String      // "O'zbekcha", "Русский", "English"
+  isDefault Boolean @default(false) // tarjima topilmasa shu tilga fallback qilinadi (bittasi true bo'lishi shart)
+  isActive  Boolean @default(true)
+  isRTL     Boolean @default(false) // kelajakda arabcha/ibroniycha kabi tillar uchun
+  order     Int     @default(0)
+}
+
+// ---- Yangiliklar toifalari (admin panelda boshqariladi) ----
+// 6 ta "tizim" toifasi (isSystem=true) frontend routing'iga bog'liq — o'chirib bo'lmaydi:
+// kundalik-yangiliklar, ommaviy-tadbirlar, rahbariyat-bayonotlari, oav-biz-haqimizda,
+// elonlar, media-galereya. Admin ulardan tashqari yangi toifalar qo'sha oladi.
+// `slug` barqaror identifikator — barcha tillarda bir xil (routing va News.categorySlug shunga bog'liq).
+model NewsCategory {
+  slug         String                    @id
+  isSystem     Boolean                   @default(false)
+  order        Int                       @default(0)
+  createdAt    DateTime                  @default(now())
+  translations NewsCategoryTranslation[]
+  news         News[]
+}
+
+model NewsCategoryTranslation {
+  id           String            @id @default(cuid())
+  categorySlug String
+  locale       String
+  label        String                              // ko'rsatiladigan nom (masalan "Kundalik yangiliklar")
+  description  String
+
+  origin       TranslationOrigin @default(HUMAN)
+  aiModel      String?                              // masalan "gemini-2.0", "claude-sonnet-5" (origin=AI bo'lsa)
+  translatedAt DateTime?
+  isReviewed   Boolean           @default(true)      // AI tarjima inson tomonidan tasdiqlanganmi
+
+  category NewsCategory @relation(fields: [categorySlug], references: [slug], onDelete: Cascade)
+
+  @@unique([categorySlug, locale])
+  @@index([locale])
+}
+
+// ---- Yangiliklar ----
+// E'tibor: News endi hech qanday tilga bog'liq matn saqlamaydi — sarlavha, matn,
+// slug va rukn nomi to'liq NewsTranslation'da. Asosiy bog'lanish doim News.id orqali.
+// cover qiymatlari: gradient-1 | gradient-2 | gradient-3 | gradient-4
+model News {
+  id           String   @id @default(cuid())
+  categorySlug String                      // NewsCategory.slug — barcha tillarda bir xil, o'zgarmas
+  author       String                      // MUALLIF NOMI (saytda chiqadi) — huquq tekshiruvi uchun ISHLATILMAYDI
+  // Yozuvni yaratgan admin. Muxbir faqat o'z yozuvlarini tahrirlay olishi uchun kerak
+  // (bkl. utils/ownership.ts). Ixtiyoriy: bu maydon qo'shilishidan OLDIN yaratilgan
+  // yozuvlarda `null` bo'ladi va ular faqat `news:edit.any` huquqi bilan tahrirlanadi.
+  authorId     String?
+  publishedAt  DateTime
+  cover        String   @default("gradient-1") // rasm hali yuklanmagan bo'lsa fallback gradient
+  coverImage   String?  // MediaAsset.url — haqiqiy yuklangan rasm (NEWS_COVER yoki HERO_BANNER turi)
+  featured     Boolean  @default(false)          // true = "Bosh material" (bosh sahifa hero karuselida chiqadi)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  category     NewsCategory      @relation(fields: [categorySlug], references: [slug])
+  translations NewsTranslation[]
+  // `onDelete: SetNull` — admin o'chirilsa uning yangiliklari SAQLANADI, faqat
+  // egalik bog'lanishi uziladi (kontent yo'qolmasligi kerak).
+  createdBy    AdminUser?        @relation(fields: [authorId], references: [id], onDelete: SetNull)
+
+  @@index([categorySlug])
+  @@index([publishedAt])
+  @@index([authorId])
+}
+
+model NewsTranslation {
+  id     String @id @default(cuid())
+  newsId String
+  locale String
+  slug   String                  // faqat shu til doirasida unikal — SEO uchun har tilda alohida URL
+  title  String
+  excerpt String
+  body   String? @db.Text
+
+  // SEO
+  metaTitle       String?
+  metaDescription String?
+  ogTitle         String?
+  ogDescription   String?
+
+  origin       TranslationOrigin @default(HUMAN)
+  aiModel      String?
+  translatedAt DateTime?
+  isReviewed   Boolean           @default(true)
+
+  news News @relation(fields: [newsId], references: [id], onDelete: Cascade)
+
+  @@unique([newsId, locale])
+  @@unique([locale, slug])
+  @@index([locale])
+}
+
+// ---- Bizning jamoa ----
+// Ism-familiya tarjima qilinmaydi (shaxsiy ism universal) — faqat lavozim/tavsif tarjima qilinadi.
+model TeamMember {
+  id           String                   @id @default(cuid())
+  name         String
+  photo        String?
+  order        Int                      @default(0)
+  translations TeamMemberTranslation[]
+}
+
+model TeamMemberTranslation {
+  id       String  @id @default(cuid())
+  memberId String
+  locale   String
+  role     String
+  description String?
+
+  origin       TranslationOrigin @default(HUMAN)
+  aiModel      String?
+  translatedAt DateTime?
+  isReviewed   Boolean           @default(true)
+
+  member TeamMember @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@unique([memberId, locale])
+  @@index([locale])
+}
+
+// ---- "Biz haqimizda", "Aloqalar", Footer va boshqa statik sahifalar ----
+// key namunalari: "about:umumiy", "about:maqsad-va-vazifalar", "about:hamkorlik",
+// "about:korrupsiyaga-qarshi-kurashish", "contact:manzil", "contact:rekvizitlar",
+// "contact:qabul-jadvali", "contact:xaridorlar-uchun", "footer:general"
+// Tarkib sahifadan sahifaga tuzilishi farq qilgani uchun (ro'yxat, jadval, oddiy matn)
+// Json ustunida saqlanadi — CMS admin panelida shu key+locale bo'yicha tahrirlanadi.
+model StaticContentTranslation {
+  id     String @id @default(cuid())
+  key    String
+  locale String
+  data   Json
+
+  origin       TranslationOrigin @default(HUMAN)
+  aiModel      String?
+  translatedAt DateTime?
+  isReviewed   Boolean           @default(true)
+  updatedAt    DateTime          @updatedAt
+
+  @@unique([key, locale])
+  @@index([locale])
+}
+
+// ---- Sonlar arxivi ----
+model Issue {
+  id         String   @id // gazeta buyurtma raqami, masalan "8043"
+  number     Int      @unique
+  date       DateTime
+  pages      Int
+  fileSize   String
+  pdfUrl     String
+  coverImage String?
+  createdAt  DateTime @default(now())
+
+  @@index([date])
+}
+
+// ---- Media galereya ----
+model MediaItem {
+  id          String   @id @default(cuid())
+  cover       String
+  imageUrl    String?  // MediaAsset.url — haqiqiy yuklangan rasm (GALLERY_IMAGE turi)
+  caption     String
+  publishedAt DateTime
+  createdAt   DateTime @default(now())
+}
+
+// ---- Interaktiv xizmatlar ----
+model Survey {
+  id        String         @id @default(cuid())
+  question  String
+  isActive  Boolean        @default(true)
+  createdAt DateTime       @default(now())
+  options   SurveyOption[]
+}
+
+model SurveyOption {
+  id       String @id @default(cuid())
+  label    String
+  votes    Int    @default(0)
+  survey   Survey @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+  surveyId String
+
+  @@index([surveyId])
+}
+
+model ForumTopic {
+  id          String   @id @default(cuid())
+  title       String
+  body        String   @db.Text
+  authorName  String
+  authorEmail String?
+  replyCount  Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model QuestionAnswer {
+  id        String   @id @default(cuid())
+  question  String   @db.Text
+  answer    String?  @db.Text
+  askedBy   String
+  email     String?
+  status    String   @default("pending") // pending | answered
+  createdAt DateTime @default(now())
+}
+
+// ---- TTBS (tez-tez beriladigan savollar) ----
+// News/TeamMember/NewsCategory bilan bir xil naqsh: bazaviy yozuvda tilga bog'liq
+// matn saqlanmaydi, savol va javob to'liq FaqItemTranslation'da.
+model FaqItem {
+  id           String               @id @default(cuid())
+  order        Int                  @default(0)
+  translations FaqItemTranslation[]
+}
+
+model FaqItemTranslation {
+  id       String @id @default(cuid())
+  faqId    String
+  locale   String
+  question String
+  answer   String @db.Text
+
+  origin       TranslationOrigin @default(HUMAN)
+  aiModel      String?
+  translatedAt DateTime?
+  isReviewed   Boolean           @default(true)
+
+  faq FaqItem @relation(fields: [faqId], references: [id], onDelete: Cascade)
+
+  @@unique([faqId, locale])
+  @@index([locale])
+}
+
+model Subscriber {
+  id        String   @id @default(cuid())
+  fullName  String
+  phone     String   @unique
+  email     String?
+  locale    String   @default("uz-latin")
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  ticketId  String   @unique
+  fullName  String
+  phone     String?
+  email     String
+  subject   String
+  message   String   @db.Text
+  createdAt DateTime @default(now())
+}
+
+// ---- Kunlik yuborish limiti (murojaat/savol) ----
+// Saytda ro'yxatdan o'tgan foydalanuvchi hisobi yo'q (frontend to'liq anonim), shuning uchun
+// `identityKey` sifatida brauzerda saqlanadigan `visitorHash` (bkl. SiteVisit'dagi xuddi shu
+// mavjud pattern) ishlatiladi, u bo'lmasa IP fallback sifatida olinadi. `@@unique([kind,
+// identityKey, day])` — bir kunda bir marta yuborish cheklovini DATABASE darajasida, race
+// condition'ga chidamli tarzda ta'minlaydi (ikkita bir vaqtdagi so'rovdan faqat bittasi
+// muvaffaqiyatli bo'ladi, ikkinchisi unique constraint xatosiga uchraydi).
+enum SubmissionKind {
+  MUROJAAT
+  SAVOL
+}
+
+model SubmissionThrottle {
+  id          String         @id @default(cuid())
+  kind        SubmissionKind
+  identityKey String
+  day         String // 'YYYY-MM-DD', Asia/Tashkent bo'yicha
+  createdAt   DateTime       @default(now())
+
+  @@unique([kind, identityKey, day])
+}
+
+// ---- Sayt tashriflari (analitika) ----
+// Frontend har bir sahifa ochilganda POST /api/analytics/visit chaqiradi (auth talab qilinmaydi).
+model SiteVisit {
+  id           String   @id @default(cuid())
+  path         String
+  visitorHash  String?  // brauzerda generatsiya qilingan anonim identifikator (unique foydalanuvchi hisoblash uchun)
+  createdAt    DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+// ---- Admin panel uchun foydalanuvchilar va rollar (RBAC) ----
+// Amaldagi rollar: SUPER_ADMIN | BOSH_MUHARRIR | MUXBIR (bkl. src/types/permissions.ts).
+// DIZAYNER va MODERATOR ESKIRGAN: yangi foydalanuvchiga tayinlab bo'lmaydi (user API'si
+// ularni qabul qilmaydi). Enum qiymatlari ATAYLAB o'chirilmadi — Postgresda enum
+// qiymatini olib tashlash butun turni qayta yaratishni talab qiladi va bu jonli bazada
+// keraksiz xavf. Agar bazada shunday rolli yozuv qolsa, `normalizeRole` uni eng kam
+// huquqli rol (MUXBIR) sifatida ko'radi.
+enum AdminRole {
+  SUPER_ADMIN
+  BOSH_MUHARRIR
+  MUXBIR
+  DIZAYNER // @deprecated
+  MODERATOR // @deprecated
+}
+
+model AdminUser {
+  id           String    @id @default(cuid())
+  fullName     String
+  username     String    @unique // login identifikatori
+  // Email autentifikatsiya uchun ISHLATILMAYDI — login faqat username+password orqali.
+  // Ixtiyoriy aloqa maydoni sifatida qoldirildi (mavjud yozuvlar yo'qolmasligi uchun);
+  // `@unique` saqlanadi, lekin NULL qiymatlar cheklanmaydi (Postgres bir nechta NULLga ruxsat beradi).
+  email        String?   @unique
+  passwordHash String
+  role         AdminRole @default(MUXBIR)
+  isActive     Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+
+  news         News[]
+}
+
+// ---- Rasmlar boshqaruvi ----
+// kind qiymatlari src/types/imageSpecs.ts dagi MediaKind bilan bir xil:
+// HERO_BANNER | NEWS_COVER | ISSUE_COVER | TEAM_PHOTO | GALLERY_IMAGE | PARTNER_LOGO | SITE_LOGO
+model MediaAsset {
+  id           String   @id @default(cuid())
+  kind         String
+  url          String
+  width        Int
+  height       Int
+  scale        String   // "1x" | "2x"
+  fileSizeKb   Int
+  originalName String
+  uploadedBy   String?
+  createdAt    DateTime @default(now())
+
+  @@index([kind])
+}

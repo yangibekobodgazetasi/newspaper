@@ -1,0 +1,49 @@
+{
+  "umumiy": {
+    "title": "\"Yangi Bekobod\" gazetasi haqida",
+    "intro": "Toshkent viloyati Bekobod tumani ijtimoiy-siyosiy gazetasi — 1931-yildan buyon xalqqa xizmat qilib kelmoqda.",
+    "body": [
+      "\"Yangi Bekobod\" gazetasi Bekobod tumani hokimligining rasmiy nashri bo'lib, tuman hayotidagi ijtimoiy-siyosiy, iqtisodiy va madaniy voqealarni yoritib boradi. Gazeta har haftada — payshanba kunlari nashr etiladi.",
+      "Nashrning asosiy vazifasi — davlat siyosati, mahalliy o'zini o'zi boshqarish organlarining faoliyati, tuman iqtisodiyoti va ijtimoiy hayotidagi yangiliklarni xolis va o'z vaqtida yoritishdir.",
+      "Gazeta muassisi — Bekobod tumani hokimligi. Nashr ISSN 2091-5497 raqami bilan ro'yxatga olingan."
+    ]
+  },
+  "maqsad-va-vazifalar": {
+    "title": "Maqsad va vazifalar",
+    "intro": "\"Yangi Bekobod\" gazetasining faoliyat yo'nalishlari quyidagi asosiy maqsad va vazifalarga asoslanadi.",
+    "body": [
+      "Nashr o'z faoliyatida ochiqlik, xolislik va jamoatchilik nazorati tamoyillariga amal qiladi."
+    ],
+    "goals": [
+      "Tuman aholisini ijtimoiy-siyosiy, iqtisodiy va madaniy hayotdagi voqealar bilan o'z vaqtida tanishtirish",
+      "Davlat dasturlari va mahalliy hokimiyat qarorlarining ijrosini jamoatchilik nazoratiga qo'yish",
+      "Fuqarolarning murojaatlari va takliflarini o'rganish hamda tegishli organlarga yetkazish",
+      "Yoshlar, ta'lim, sog'liqni saqlash va ijtimoiy himoya sohalaridagi yutuqlarni targ'ib qilish",
+      "Korrupsiyaga qarshi kurashish va shaffoflikni ta'minlashga oid materiallarni muntazam yoritish",
+      "Mahalliy iqtisodiyot, qishloq xo'jaligi va tadbirkorlik sohasidagi ilg'or tajribalarni ommalashtirish"
+    ]
+  },
+  "hamkorlik": {
+    "title": "Hamkorlik",
+    "intro": "\"Yangi Bekobod\" gazetasi quyidagi tashkilotlar bilan yaqin hamkorlikda faoliyat yuritadi.",
+    "body": [
+      "Gazeta jamoasi davlat organlari, ta'lim muassasalari va boshqa OAV vakillari bilan doimiy hamkorlikni yo'lga qo'ygan. Hamkorlik asosan qo'shma tadbirlar, axborot almashinuvi va birgalikdagi loyihalar shaklida amalga oshiriladi."
+    ],
+    "partners": [
+      { "id": "p1", "name": "Bekobod tumani hokimligi", "logo": null },
+      { "id": "p2", "name": "O'zbekiston Matbuot va axborot agentligi", "logo": null },
+      { "id": "p3", "name": "Toshkent viloyati hokimligi axborot xizmati", "logo": null },
+      { "id": "p4", "name": "\"NISO NASHRIYOT VA MATBAA UYI\" MCHJ", "logo": null }
+    ]
+  },
+  "korrupsiyaga-qarshi-kurashish": {
+    "title": "Korrupsiyaga qarshi kurashish",
+    "intro": "\"Yangi Bekobod\" gazetasi jamoasi korrupsiyaning har qanday ko'rinishiga nisbatan murosasiz munosabatda bo'ladi.",
+    "body": [
+      "Muassasa faoliyatida shaffoflikni ta'minlash, byurokratik to'siqlarni qisqartirish va fuqarolar bilan ochiq muloqotni yo'lga qo'yish ustuvor vazifa hisoblanadi.",
+      "Korrupsiyaga oid holatlar yuzasidan har qanday fuqaro ishonch telefoni yoki onlayn portal orqali murojaat qilishi mumkin — barcha murojaatlar maxfiylik saqlangan holda ko'rib chiqiladi."
+    ],
+    "hotline": "1003",
+    "trustLineUrl": "https://ishonch.uz"
+  }
+}

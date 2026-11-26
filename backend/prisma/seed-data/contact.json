@@ -1,0 +1,30 @@
+{
+  "manzil": {
+    "address": "\"Zafar\" shaharchasi, hokimiyat binosi, 3-qavat, Bekobod tumani, Toshkent viloyati",
+    "phone": "(998) 55 902 59 94",
+    "email": "yangibekobod@umail.uz",
+    "workingHours": "Dushanba–Juma, 09:00–18:00 (tushlik 13:00–14:00)",
+    "mapLat": 40.2168,
+    "mapLng": 69.2762
+  },
+  "rekvizitlar": {
+    "founder": "Bekobod tumani hokimligi",
+    "legalAddress": "\"Zafar\" shaharchasi, hokimiyat binosi, 3-qavat, Bekobod tumani, Toshkent viloyati, 110300",
+    "bankAccount": "2020 8000 3054 8110 1000",
+    "inn": "201234567",
+    "issn": "2091-5497"
+  },
+  "qabulJadvali": [
+    { "day": "Dushanba", "hours": "09:00–12:00", "person": "Bosh muharrir Sarvinoz Sheraliyeva" },
+    { "day": "Chorshanba", "hours": "14:00–17:00", "person": "Bosh muharrir o'rinbosari" },
+    { "day": "Juma", "hours": "09:00–12:00", "person": "Bosh muharrir Sarvinoz Sheraliyeva" }
+  ],
+  "xaridorlarUchun": {
+    "title": "Xaridorlar uchun",
+    "body": [
+      "\"Yangi Bekobod\" gazetasiga obuna bo'lish \"O'zbekiston pochtasi\" bo'limlari orqali, shuningdek saytimizdagi elektron obuna xizmati orqali amalga oshiriladi.",
+      "Gazeta har haftada — payshanba kunlari chop etiladi. Bosma nusxa tuman bo'ylab barcha pochta bo'limlariga yetkazib beriladi, elektron nusxa esa obunachilarga PDF formatida sayt orqali taqdim etiladi.",
+      "Obuna narxlari va yetkazib berish tartibi haqida to'liq ma'lumot olish uchun \"O'zbekiston pochtasi\"ning eng yaqin bo'limiga yoki tahririyatga murojaat qilishingiz mumkin."
+    ]
+  }
+}
